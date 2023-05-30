@@ -15,6 +15,8 @@ Route::get('login', 'LoginController@index')->name('login');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::post('auth/login', 'AuthController@login_request')->name('auth.login');
 Route::get('auth/logout', 'AuthController@logout_request')->name('auth.logout');
+Route::get('useraccount', 'UserController@useraccount')->name('useraccount');
+
 
 //PAGES
 

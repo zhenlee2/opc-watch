@@ -465,7 +465,7 @@
 	</div>
 </div>
 <script type="text/javascript">
-	var session_layout = '{{ session()->get('layout') }}';
+	var session_layout = '{{ session()->get("layout") }}';
 </script>
 @endsection
 

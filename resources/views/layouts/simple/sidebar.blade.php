@@ -31,20 +31,19 @@
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/dashboard' ? 'block;' : 'none;' }}">
 							<li><a class="lan-4 {{ Route::currentRouteName()=='index' ? 'active' : '' }}" href="{{route('createpc')}}">Office</a></li>
-                     		<!-- <li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('division')}}">Division</a></li> -->
-                     		<!-- <li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('error-400')}}">Individual</a></li> -->
+                     		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('office')}}">Office Review</a></li>
 						</ul>
 					</li>
-					<li class="sidebar-list">
+					<!-- <li class="sidebar-list">
 						<label class="badge badge-success"></label><a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/dashboard' ? 'active' : '' }}" href="#"><i data-feather="check-square"></i><span class="lan-3">Performance Contract &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReview</span>
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/dashboard' ? 'down' : 'right' }}"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/dashboard' ? 'block;' : 'none;' }}">
 							<li><a class="lan-4 {{ Route::currentRouteName()=='index' ? 'active' : '' }}" href="{{route('office')}}">Office</a></li>
-                     		<!-- <li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('divisionreview')}}">Division</a></li> -->
-                     		<!-- <li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('show')}}">Show OPC</a></li> -->
+                     		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('divisionreview')}}">Division</a></li>
+                     		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('show')}}">Show OPC</a></li>
 						</ul>
-					</li>
+					</li> -->
 
 					<li class="sidebar-main-title">
 						<div>

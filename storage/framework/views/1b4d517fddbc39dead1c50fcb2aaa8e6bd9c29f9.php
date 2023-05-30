@@ -78,7 +78,8 @@
                                                                 <thead>
                                                                 <tr align="center">
                                                                     <th colspan="2">KEY RESULTS AREA</th>
-                                                                    <th rowspan="2" >Code</th>
+                                                                    <th colspan="1" class="bs-0"></th>
+                                                                    
                                                                     <th rowspan="2" class="col-sm-4 p-0">PERFORMANCE INDICATOR </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
                                                                     <th rowspan="2" class="col-sm-5 p-0">ACTUAL PERFORMANCE </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
                                                                     <th colspan="4">RATING</th>
@@ -90,6 +91,7 @@
                                                                 <tr align="center" > 
                                                                     <th scope="col" class="col-form-label col-3 "><i class="icofont icofont-trophy"></i> Objectives, Program, Project, Activity</th>
                                                                     <th scope="col" class="col-sm-1 p-0"><i class="icofont icofont-chart-pie"></i> Weight Allocation</th> 
+                                                                    <th scope="col" class="col-sm-1 col-form-label p-0">Code</th>
                                                                     <th scope="col" class="col-sm-1 col-form-label p-0">Quantity</br>Score</th> 
                                                                     <th scope="col" class="col-sm-1 col-form-label p-0">Quality</br>Score</th> 
                                                                     <th scope="col" class="col-sm-1 col-form-label p-0">Timeliness</br>Score</th> 
@@ -128,8 +130,8 @@
                                                             <td class="p-0" >
                                                                         <div class="text-center m-1"><?php echo e($d->sub_weight_allocation); ?></div>
                                                             </td>
-                                                            <td class="p-0">
-                                                                <div class="col-1 text-center m-1"><?php echo e($d->sort); ?></div>
+                                                            <td>
+                                                                <div class="text-center"><?php echo e($d->sort); ?></div>
                                                             </td>
                                                             <td class="p-0"><div class="row">
                                                             <!-- <div class="col-1 text-center p-0 m-1"><?php echo e($d->sort); ?></div> -->
@@ -142,7 +144,7 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <!-- ACTUAL PERFORMANCE -->
+                                                            <!-- Target PERFORMANCE -->
                                                             <td class="p-0">
                                                                 <div class="row">
                                                                 <!-- <div class="col-1 text-center p-0 m-1"></div> -->
@@ -184,7 +186,7 @@
                                                     
                                                 <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <?php if($d->indicator_id == 2): ?>
-                                                    <tr>
+                                                        <tr>
                                                             <td class="p-0" align="center" >
                                                                 <div class="m-1"><?php echo e($d->name); ?></div>
                                                                 <a class="" href="#"  data-bs-original-title="MOVs" data-bs-toggle="modal" data-bs-target="#uploadMOVModal"> <span class="fa fa-paperclip"></span>MOV</a>
@@ -193,11 +195,11 @@
                                                                         <div class="text-center m-1"><?php echo e($d->sub_weight_allocation); ?></div>
                                                             </td>
                                                             <td>
-                                                                <div class="col-1 text-center m-1"><?php echo e($d->sort); ?></div>
+                                                                <div class="text-center"><?php echo e($d->sort); ?></div>
                                                             </td>
-                                                            <td class="p-0 m-1"><div class="row">
+                                                            <td class="p-0"><div class="row">
                                                             <!-- <div class="col-1 text-center p-0 m-1"><?php echo e($d->sort); ?></div> -->
-                                                                    <div class="col-9 p-0 m-1">
+                                                                    <div class="col-11">
                                                                         <div class="m-1"><strong><?php echo e($d->target_indicator_desc); ?></strong></div>
                                                                         <div class="m-1"><strong>Ql:</strong> <?php echo e($d->quantity); ?></div>
                                                                         <div class="m-1"><strong>Qn:</strong> <?php echo e($d->quality); ?></div>
@@ -206,9 +208,11 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <!-- ACTUAL PERFORMANCE -->
-                                                            <td class="p-0"><div class="row">
-                                                                    <div class="col-11 m-1">
+                                                            <!-- Target PERFORMANCE -->
+                                                            <td class="p-0">
+                                                                <div class="row">
+                                                                <!-- <div class="col-1 text-center p-0 m-1"></div> -->
+                                                                    <div class="col-11">
                                                                         <div class="m-1"><strong><?php echo e($d->target_indicator_desc); ?></strong></div>
                                                                         <div class="m-1"><strong>Ql:</strong> <?php echo e($d->quantity); ?></div>
                                                                         <div class="m-1"><strong>Qn:</strong> <?php echo e($d->quality); ?></div>
@@ -245,7 +249,7 @@
                                                     
                                                 <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <?php if($d->indicator_id == 3): ?>
-                                                    <tr>
+                                                        <tr>
                                                             <td class="p-0" align="center" >
                                                                 <div class="m-1"><?php echo e($d->name); ?></div>
                                                                 <a class="" href="#"  data-bs-original-title="MOVs" data-bs-toggle="modal" data-bs-target="#uploadMOVModal"> <span class="fa fa-paperclip"></span>MOV</a>
@@ -254,11 +258,11 @@
                                                                         <div class="text-center m-1"><?php echo e($d->sub_weight_allocation); ?></div>
                                                             </td>
                                                             <td>
-                                                                <div class="col-1 text-center m-1"><?php echo e($d->sort); ?></div>
+                                                                <div class="text-center"><?php echo e($d->sort); ?></div>
                                                             </td>
                                                             <td class="p-0"><div class="row">
                                                             <!-- <div class="col-1 text-center p-0 m-1"><?php echo e($d->sort); ?></div> -->
-                                                                    <div class="col-9 p-0 m-1">
+                                                                    <div class="col-11">
                                                                         <div class="m-1"><strong><?php echo e($d->target_indicator_desc); ?></strong></div>
                                                                         <div class="m-1"><strong>Ql:</strong> <?php echo e($d->quantity); ?></div>
                                                                         <div class="m-1"><strong>Qn:</strong> <?php echo e($d->quality); ?></div>
@@ -267,9 +271,11 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <!-- ACTUAL PERFORMANCE -->
-                                                            <td class="p-0"><div class="row">
-                                                                    <div class="col-11 m-1">
+                                                            <!-- Target PERFORMANCE -->
+                                                            <td class="p-0">
+                                                                <div class="row">
+                                                                <!-- <div class="col-1 text-center p-0 m-1"></div> -->
+                                                                    <div class="col-11">
                                                                         <div class="m-1"><strong><?php echo e($d->target_indicator_desc); ?></strong></div>
                                                                         <div class="m-1"><strong>Ql:</strong> <?php echo e($d->quantity); ?></div>
                                                                         <div class="m-1"><strong>Qn:</strong> <?php echo e($d->quality); ?></div>
