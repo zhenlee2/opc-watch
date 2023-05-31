@@ -192,7 +192,7 @@
           <div class="media profile-media">
             <img class="b-r-10" src="<?php echo e(asset('assets/images/dashboard/profile.jpg')); ?>" alt="">
             <div class="media-body">
-              <span><?php echo e(auth()->user()->name); ?></span>
+              <span><?php echo e($users->fname); ?></span>
               <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
             </div>
           </div>

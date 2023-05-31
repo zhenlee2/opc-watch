@@ -18,6 +18,7 @@ Route::get('auth/logout', 'AuthController@logout_request')->name('auth.logout');
 Route::get('useraccount', 'UserController@useraccount')->name('useraccount');
 
 
+
 //PAGES
 
 //PERFORMANCE CONTRACT
@@ -67,6 +68,7 @@ Route::get('get_category', 'CategoryController@list');
 
 Route::get('print', 'PrintController@index')->name('print');
 Route::get('users', 'UserController@index')->name('users');
+Route::get('useraccount', 'UserController@index1')->name('useraccount');
 
 Route::get('get_countindicator', 'DashboardController@PCindicatorcount');
 

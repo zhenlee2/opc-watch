@@ -20,14 +20,16 @@ class DashboardController extends Controller
             $result1 = DB::table('pc_indicator')
             ->whereBetween(DB::raw('MONTH(created_at)'), [7, 12])
             ->get();
-
+            
             $results = count($result);
             $results2 = count($result1);
+
+            $users = auth()->user();
             // $data = [
             //     "count" => count($result),
             //     "results" => $result
             // ];
-            return view('dashboard.dashboard-02', compact('results', 'results2'));
+            return view('dashboard.dashboard-02', compact('results', 'results2', 'users'));
         }else {
             return redirect()->route('login');
         }
