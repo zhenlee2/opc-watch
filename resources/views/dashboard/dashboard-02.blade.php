@@ -40,7 +40,7 @@
 								<div class="ecommerce-widgets media">
 									<div class="media-body">
 									<p><h5>First Semester</h5></p>
-										<h6 class="f-w-500 mb-0 f-26">No. of Indicator :  <span class="counter">100</span></h6>
+										<h6 class="f-w-500 mb-0 f-26">No. of Indicator :  <span class="counter">{{$results}}</span></h6>
 									</div>
 									<!-- <div class="ecommerce-box light-bg-primary"><i class="fa fa-heart" aria-hidden="true"></i></div> -->
 								</div>
@@ -53,7 +53,7 @@
 										<p><h5>Second Semester</h5></p>
 										<!-- <p class="f-w-500 font-roboto">Second Semester<span class="badge pill-badge-primary ms-3">Hot</span></p> -->
 										<div class="progress-box">
-											<h6 class="f-w-500 mb-0 f-26">No. of Indicator : <span class="counter">40</span></h6>
+											<h6 class="f-w-500 mb-0 f-26">No. of Indicator : <span class="counter">{{$results2}}</span></h6>
 											<!-- <h4 class="f-w-500 mb-0 f-26">$<span class="counter">9000.04</span></h4> -->
 											<!-- <div class="progress sm-progress-bar progress-animate app-right d-flex justify-content-end">
 											<div class="progress-gradient-primary" role="progressbar" style="width: 35%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="font-primary">88%</span><span class="animate-circle"></span></div>
@@ -93,10 +93,7 @@
 <script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
 <script src="{{asset('assets/js/chart/apex-chart/stock-prices.js')}}"></script>
 <script src="{{asset('assets/js/chart/apex-chart/chart-custom.js')}}"></script>
-<script src="{{asset('assets/js/chart/chartist/chartist.js')}}"></script>
-<script src="{{asset('assets/js/chart/chartist/chartist-plugin-tooltip.js')}}"></script>
-<script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
-<script src="{{asset('assets/js/chart/apex-chart/stock-prices.js')}}"></script>
+
 <script src="{{asset('assets/js/prism/prism.min.js')}}"></script>
 <script src="{{asset('assets/js/clipboard/clipboard.min.js')}}"></script>
 <script src="{{asset('assets/js/counter/jquery.waypoints.min.js')}}"></script>
@@ -105,5 +102,9 @@
 <script src="{{asset('assets/js/custom-card/custom-card.js')}}"></script>
 <script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script>
 <script src="{{asset('assets/js/dashboard/dashboard_2.js')}}"></script>
+
+
+<script>
+</script>
 @endsection
 

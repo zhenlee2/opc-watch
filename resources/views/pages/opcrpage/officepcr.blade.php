@@ -73,7 +73,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                    <a href="#" onclick="editContact(0)" class="btn btn-light btn-sm example-popover form-control" href="#" onclick="editContact(0)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
+                                                                    <a href="{{route('showpcr', ['year' => '2024', 'semester' => '3'])}}" class="btn btn-light btn-sm example-popover form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
                                                                         <!-- <a href="javascript:void(0)" class="btn btn-sm btn-primary icon-pencil "></a>
                                                                         <a href="javascript:void(0)" class="btn btn-sm btn-danger icon-trash "></a> -->
                                                                     </td>

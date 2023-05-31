@@ -7,6 +7,11 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/owlcarousel.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/prism.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/sweetalert2.min.css')}}">
+
+<!-- MOV JS -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/date-picker.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/dropzone.css')}}">
 @endsection
 
 @section('css')
@@ -347,23 +352,45 @@
         <div class="modal fade" id="uploadMOVModal" tabindex="-1" role="dialog" aria-labelledby="uploadMOVModal" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 30%">
             <div class="modal-content">
-                <div class="modal-header">
+                <!-- <div class="modal-header">
                     <h5 class="modal-title text-center" id="createPCModalLabel" >Upload MOVs</h5>
-                    <!-- <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                </div>
-                    <form action="" id="frm" name="frm" method="POST">
-                        <div class="modal-body">
-                        <form method="POST" action="/upload" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="files[]" multiple>
-                            <button type="submit">Upload MOVs</button>
-                        </form>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div> -->
+                    <!-- <form action="" id="frm" name="frm" method="POST"> -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                <div class="form theme-form">
+                                    <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <label>Upload project file</label>
+                                        <form class="dropzone" id="singleFileUpload" action="/upload.php">
+                                            <div class="dz-message needsclick">
+                                            <i class="icon-cloud-up"></i>
+                                            <h6>Drop files here or click to upload.</h6>
+                                            <!-- <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span> -->
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col">
+                                        <div><a class="btn btn-success me-3" href="#">Add</a>
+                                        <a class="btn btn-danger" href="#" data-bs-dismiss="modal">Cancel</a></div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-secondary btn-sm" type="submit" id="add-button">Add</button>
-                        </div>   
-                    </form>
+                        </div>
+
+
             </div>
             </div>
         </div>
@@ -495,6 +522,19 @@
 <script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
 <script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script>
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
+
+<!-- MOV JS -->
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+<script src="{{asset('assets/js/dropzone/dropzone.js')}}"></script>
+<script src="{{asset('assets/js/dropzone/dropzone-script.js')}}"></script>
+<script src="{{asset('assets/js/typeahead/handlebars.js')}}"></script>
+<script src="{{asset('assets/js/typeahead/typeahead.bundle.js')}}"></script>
+<script src="{{asset('assets/js/typeahead/typeahead.custom.js')}}"></script>
+<script src="{{asset('assets/js/typeahead-search/handlebars.js')}}"></script>
+<script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script>
+
 <script>
     get_activity(1);
 

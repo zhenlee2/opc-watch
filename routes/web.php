@@ -68,6 +68,8 @@ Route::get('get_category', 'CategoryController@list');
 Route::get('print', 'PrintController@index')->name('print');
 Route::get('users', 'UserController@index')->name('users');
 
+Route::get('get_countindicator', 'DashboardController@PCindicatorcount');
+
 //Language Change
 Route::get('lang/{locale}', function ($locale) {
     if (! in_array($locale, ['en', 'de', 'es','fr','pt', 'cn', 'ae'])) {
