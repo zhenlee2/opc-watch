@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 
 
+
 Route::get('/', function () {
     return redirect()->route('dashboard');
 })->name('/');
@@ -15,9 +16,6 @@ Route::get('login', 'LoginController@index')->name('login');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::post('auth/login', 'AuthController@login_request')->name('auth.login');
 Route::get('auth/logout', 'AuthController@logout_request')->name('auth.logout');
-Route::get('useraccount', 'UserController@useraccount')->name('useraccount');
-
-
 
 //PAGES
 
@@ -68,7 +66,6 @@ Route::get('get_category', 'CategoryController@list');
 
 Route::get('print', 'PrintController@index')->name('print');
 Route::get('users', 'UserController@index')->name('users');
-Route::get('useraccount', 'UserController@index1')->name('useraccount');
 
 Route::get('get_countindicator', 'DashboardController@PCindicatorcount');
 
@@ -88,7 +85,9 @@ Route::group(['prefix' => 'ajax', 'namespace' => 'Ajax'], function () {
     // Route::get('get_office/{id}', 'PcController@get_office');
 });
 
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('users', 'UserController@index')->name('users');
+});
 
     
 // Route::prefix('dashboard')->group(function () {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PCIndicator;
+use App\Models\Users;
 
 use DB;
 
@@ -23,16 +24,12 @@ class DashboardController extends Controller
             
             $results = count($result);
             $results2 = count($result1);
+            $user = Users::findOrFail(auth()->id());
 
-            $users = auth()->user();
-            // $data = [
-            //     "count" => count($result),
-            //     "results" => $result
-            // ];
-            return view('dashboard.dashboard-02', compact('results', 'results2', 'users'));
+            return view('dashboard.dashboard-02', compact('results', 'results2', 'user'));
         }else {
             return redirect()->route('login');
         }
-    }    
+    } 
 
 }

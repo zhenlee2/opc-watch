@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Indicator;
 use App\Models\Category;
 
-use App\Models\User;
+use App\Models\Users;
 
 
 use App\Services\OfficePerformanceContract\CreatePerformanceContract;
@@ -33,11 +33,11 @@ class ShowopcController extends Controller
 
         if(Auth::check()) {
             $category = Category::all();
-            // $users = User::all();
+            $user = Users::findOrFail(auth()->id());
             $data = $showPerformanceContract->execute();
             $indicator = Indicator::select('sort')->groupBy('sort')->get();
             dd($data);
-            return view('pages.opcpage.showopc', compact('category', 'indicator', 'data'));
+            return view('pages.opcpage.showopc', compact('category', 'indicator', 'data', 'user'));
         }else {
             return redirect()->route('login');
         }

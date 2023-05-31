@@ -15,9 +15,4 @@ class UserAccount
         return $data;
     }
 
-    public function exe()
-    {
-        $data1 = Users::findOrFail(auth()->id());
-        return $data1;
-    }
 }
