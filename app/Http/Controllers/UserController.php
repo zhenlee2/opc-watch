@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\Users;
 
+use App\Services\User\UserAccount;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index(UserAccount $UserAccount)
     {
         if(Auth::check()) {
-            // $user = User::findOrFail($id);
-            return view('pages.userlist');
+            $data = $UserAccount->execute();
+            $user = Users::findOrFail(auth()->id());
+            return view('pages.userlist', compact('data', 'user'));
         }else {
             return redirect()->route('login');
         }
     }
+
 }

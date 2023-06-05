@@ -129,14 +129,14 @@
                     name: "name",
                     type: "text",
                     title: "Offices",
-                    // validate: { message: "Offices should be specified", validator: "rangeLength", param: [1, 250] } ,
+                    validate: { message: "Offices should be specified", validator: "rangeLength", param: [1, 250] } ,
                     width: 200
                 },
                 {
                     name: "code",
                     type: "text",
                     title: "Abbreviation",
-                    // validate: { message: "Abbreviation should be specified", validator: "rangeLength", param: [1, 250] } ,
+                    validate: { message: "Abbreviation should be specified", validator: "rangeLength", param: [1, 250] } ,
                     width: 40
                 },
                 {

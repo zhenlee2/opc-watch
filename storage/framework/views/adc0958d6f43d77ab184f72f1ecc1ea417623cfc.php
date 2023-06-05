@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="<?php echo e(asset('assets/images/logo/DSWD-logo.png')); ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?php echo e(asset('assets/images/logo/DSWD-logo.png')); ?>" type="image/x-icon">
-    <title>DSWD Caraga OPC-Watch | Dashboard</title>
+    <title>DSWD Caraga OPC-Watch</title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
     <?php echo $__env->make('layouts.simple.css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('style'); ?>
     <script>
-      var BASE_URL = '<?php echo e(env('APP_URL')); ?>';
+      var BASE_URL = '<?php echo e(env("APP_URL")); ?>';
     </script>
   </head>
   <body <?php if(Route::current()->getName() == 'index'): ?> onload="startTime()" <?php endif; ?>>

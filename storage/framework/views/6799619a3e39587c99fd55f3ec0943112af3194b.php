@@ -28,20 +28,19 @@
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/dashboard' ? 'block;' : 'none;'); ?>">
 							<li><a class="lan-4 <?php echo e(Route::currentRouteName()=='index' ? 'active' : ''); ?>" href="<?php echo e(route('createpc')); ?>">Office</a></li>
-                     		<!-- <li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('division')); ?>">Division</a></li> -->
-                     		<!-- <li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('error-400')); ?>">Individual</a></li> -->
+                     		<li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('office')); ?>">Office Review</a></li>
 						</ul>
 					</li>
-					<li class="sidebar-list">
+					<!-- <li class="sidebar-list">
 						<label class="badge badge-success"></label><a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/dashboard' ? 'active' : ''); ?>" href="#"><i data-feather="check-square"></i><span class="lan-3">Performance Contract &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReview</span>
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/dashboard' ? 'down' : 'right'); ?>"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/dashboard' ? 'block;' : 'none;'); ?>">
 							<li><a class="lan-4 <?php echo e(Route::currentRouteName()=='index' ? 'active' : ''); ?>" href="<?php echo e(route('office')); ?>">Office</a></li>
-                     		<!-- <li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('divisionreview')); ?>">Division</a></li> -->
-                     		<!-- <li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('show')); ?>">Show OPC</a></li> -->
+                     		<li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('divisionreview')); ?>">Division</a></li>
+                     		<li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('show')); ?>">Show OPC</a></li>
 						</ul>
-					</li>
+					</li> -->
 
 					<li class="sidebar-main-title">
 						<div>

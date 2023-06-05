@@ -8,7 +8,7 @@ use App\Models\PerformanceContract;
 use App\Models\Offices;
 use App\Models\Indicator;
 use App\Models\Category;
-use App\Models\Activity;
+use App\Models\Users;
 use App\Models\PCIndicator;
 use DB;
 
@@ -23,10 +23,11 @@ class CreateofficeController extends Controller
     {
 
         if(Auth::check()) {
+            $user = Users::findOrFail(auth()->id());
             $category = Category::all();
             $data = $showPerformanceContract->execute();
             $indicator = Indicator::select('sort')->groupBy('sort')->get();
-            return view('pages.opcpage.officepc', compact('category', 'indicator', 'data'));
+            return view('pages.opcpage.officepc', compact('category', 'indicator', 'data', 'user'));
         }else {
             return redirect()->route('login');
         }

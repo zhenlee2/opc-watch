@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
-
+use App\Models\Users;
 
 class CategoryController extends Controller
 {
     public function index(Request $request)
     {
         if(Auth::check()) {
-            return view('pages.activity');
+            $user = Users::findOrFail(auth()->id());
+            return view('pages.activity', compact('user'));
         }else {
             return redirect()->route('login');
         }
