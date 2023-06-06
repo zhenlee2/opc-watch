@@ -295,6 +295,7 @@
                                 <div class="col-form-label">Select KRA Category</div>
                                 <select id="category-id" class="form-control" >
                                     <optgroup label="Categories">
+                                        <option data-name="" value=""></option>
                                         @if(!empty($category))
                                         @foreach ($category as $item)
                                         <option data-name="{{$item->name}}" value="{{$item->id}}">{{$item->name}}</option>
@@ -412,7 +413,7 @@
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
 <script>
     let data_arr = [];
-    get_activity(1);
+    // get_activity(1);
 
     $('#category-id').change(function() {
         let cat_id = $(this).val();
@@ -424,6 +425,13 @@
         let indi_id = $(this).val();
         console.log(indi_id);
         get_indicator(indi_id);
+    });
+
+    $('#createPCModal').on('show.bs.modal', function (e) {
+        get_activity(0);
+        $('#category-id').val('');
+        $('#indicator-id').val('');
+        $('#strategic1').empty();
     });
 
     function get_activity(cat_id) {
@@ -454,6 +462,95 @@
             })
         });
     }
+
+    function removeActivity(indicator_code) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, save it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const idxObj = data_arr.findIndex(object => {
+                    return object.indicator_code == indicator_code;
+                });
+
+                data_arr.splice(idxObj, 1);
+                $(`#indicator-id>optgroup>option[value=${indicator_code}]`).removeAttr('disabled');
+                generatePCElement();
+            }
+        })
+       
+    }
+
+    function generatePCElement() {
+        let strategic_elem = $('#strategic2');
+        let core_elem = $('#core2');
+        let support_elem = $('#support2');
+
+        strategic_elem.empty();
+        core_elem.empty();
+        support_elem.empty();
+        data_arr.forEach(e => {
+            for (let i = 0; i < e.indicator.length; i++) {
+                let activityNameElement = '';
+                let actionElement = '';
+                if (i == 0) {
+                    activityNameElement =  '<td class="p-0" rowspan='+e.indicator.length+'>' +
+                    '<div class="text-center m-1">'+e.activity_name+'</div>' +
+                    '</td>';    
+                    actionElement = '<td class="p-0" rowspan='+e.indicator.length+'>' +
+                    '<button onclick="removeActivity('+e.indicator_code+')" class="btn btn-sm btn-danger icon-trash m-auto d-block"></button>' +
+                    '</td>';
+                }
+
+                let strategicElement = '<tr>' + activityNameElement+
+                '<td class="p-0" >' +
+                '<div class="row p-0 m-1">' +
+                '<div class="text-center">'+e.weight[i]+'</div>' +
+                '</div>' +
+                '</td>' +
+                '<td class="p-0"><div class="row">' +
+                '<div class="col-1 text-center p-0 m-1">'+e.indicator_code+'</div>' +
+                '<div class="col-10 p-0 m-1">' +
+                '<div ><strong>'+e.target[i]+'</strong></div>' +
+                '<div class="m-1"><strong>Ql:</strong>'+e.quan[i]+'</div>' +
+                '<div class="m-1"><strong>Qn:</strong>'+e.qual[i]+'</div>' +
+                '<div class="m-1"><strong>T:</strong>'+e.time[i]+'</div>' +
+                '</div>' +
+                '</div></td>' +
+                '<td class="p-0">' +
+                '<div class="row m-1 p-0">' +
+                '<div class="text-center"> '+e.budget_alloted[i]+'</div>' +
+                '</div>' +
+                '</td>' + '<td class="p-0"><div class="row m-1">' +
+                '<div class="text-center">'+e.office[i]+'</div>' +
+                '</div></td>' +
+                actionElement +
+                '</tr>';
+
+                switch (e.category_id) {
+                    case '1':
+                        strategic_elem.append(strategicElement);
+                        break;
+                    case '2':
+                        core_elem.append(strategicElement);
+                        break;
+                    case '3':
+                        support_elem.append(strategicElement);
+                        break;
+                    default:
+                        console.log('error');
+                        break;
+                }
+                
+            }
+            
+        });
+    }
     
     $("#frm").submit(function(event){
         event.preventDefault();
@@ -480,68 +577,14 @@
                 'budget_alloted': $("input[name='budget[]']").map(function(){return $(this).val();}).get(),
                 'office': $("input[name='office[]']").map(function(){return $(this).val();}).get(),
             };
+
+            let indicator_code = $('#indicator-id').val() ?? 0;
+
+            $(`#indicator-id>optgroup>option[value=${indicator_code}]`).attr('disabled','disabled');
+
             data_arr.push(data);
-            console.log(data_arr);
-            let strategic_elem = $('#strategic2');
-            let core_elem = $('#core2');
-            let support_elem = $('#support2');
 
-            strategic_elem.empty();
-            core_elem.empty();
-            support_elem.empty();
-
-            data_arr.forEach(e => {
-                for (let i = 0; i < e.indicator.length; i++) {
-                    let activityNameElement = '';
-                    if (i == 0) {
-                        activityNameElement =  '<td class="p-0" rowspan='+e.indicator.length+'>' +
-                        '<div class="text-center m-1">'+e.activity_name+'</div>' +
-                        '</td>';    
-                    }
-
-                    let strategicElement = '<tr>' + activityNameElement+
-                    '<td class="p-0" >' +
-                    '<div class="row p-0 m-1">' +
-                    '<div class="text-center">'+e.weight[i]+'</div>' +
-                    '</div>' +
-                    '</td>' +
-                    '<td class="p-0"><div class="row">' +
-                    '<div class="col-1 text-center p-0 m-1">'+e.indicator_code+'</div>' +
-                    '<div class="col-10 p-0 m-1">' +
-                    '<div ><strong>'+e.target[i]+'</strong></div>' +
-                    '<div class="m-1"><strong>Ql:</strong>'+e.quan[i]+'</div>' +
-                    '<div class="m-1"><strong>Qn:</strong>'+e.qual[i]+'</div>' +
-                    '<div class="m-1"><strong>T:</strong>'+e.time[i]+'</div>' +
-                    '</div>' +
-                    '</div></td>' +
-                    '<td class="p-0">' +
-                    '<div class="row m-1 p-0">' +
-                    '<div class="text-center"> '+e.budget_alloted[i]+'</div>' +
-                    '</div>' +
-                    '</td>' + '<td class="p-0"><div class="row m-1">' +
-                    '<div class="text-center">'+e.office[i]+'</div>' +
-                    '</div></td>' +
-                    '<td></td>' +
-                    '</tr>';
-
-                    switch (e.category_id) {
-                        case '1':
-                            strategic_elem.append(strategicElement);
-                            break;
-                        case '2':
-                            core_elem.append(strategicElement);
-                            break;
-                        case '3':
-                            support_elem.append(strategicElement);
-                            break;
-                        default:
-                            console.log('error');
-                            break;
-                    }
-                    
-                }
-                
-            });
+            generatePCElement();
             $('#createPCModal').modal('toggle');
            
             
