@@ -30,13 +30,12 @@ class ShowopcController extends Controller
     // }
     public function index(ShowPerformanceContract $showPerformanceContract)
     {
-
         if(Auth::check()) {
-            $category = Category::all();
             $user = Users::findOrFail(auth()->id());
+            $category = Category::all();
             $data = $showPerformanceContract->execute();
             $indicator = Indicator::select('sort')->groupBy('sort')->get();
-            dd($data);
+            // return dd($category);
             return view('pages.opcpage.showopc', compact('category', 'indicator', 'data', 'user'));
         }else {
             return redirect()->route('login');

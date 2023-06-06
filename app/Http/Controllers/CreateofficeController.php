@@ -72,13 +72,15 @@ class CreateofficeController extends Controller
     public function showpc($year, $semester, ShowPerformanceContract $showPerformanceContract)
     {
         $data = $showPerformanceContract->execute();
-        return view('pages.opcpage.showopc', compact('data'));
+        $user = Users::findOrFail(auth()->id());
+        return view('pages.opcpage.showopc', compact('data', 'user'));
     }
 
     public function showpcr($year, $semester, ShowPerformanceContract $showPerformanceContract)
     {
         $data = $showPerformanceContract->execute();
-        return view('pages.opcrpage.showopcr', compact('data'));
+        $user = Users::findOrFail(auth()->id());
+        return view('pages.opcrpage.showopcr', compact('data', 'user'));
     }
 
 

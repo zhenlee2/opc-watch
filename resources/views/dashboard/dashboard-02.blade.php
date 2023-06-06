@@ -2,10 +2,10 @@
 <!-- @section('title', 'Bootstrap Tabs') -->
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/chartist.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/owlcarousel.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/prism.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/prism.css')}}"> -->
 @endsection
 
 <!-- @section('style')
@@ -70,7 +70,7 @@
 							<p><h5>Number of indicators per offices</h5></p>
 							<!-- </div> -->
 							<div class="card o-hidden dash-chart">
-									<div id="basic-bar"></div>
+									<div id="basic-bar1"></div>
 							</div>
 						</div>
 					</div>	
@@ -90,21 +90,57 @@
 @endsection
 
 @section('script')
+
+
 <script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
 <script src="{{asset('assets/js/chart/apex-chart/stock-prices.js')}}"></script>
 <script src="{{asset('assets/js/chart/apex-chart/chart-custom.js')}}"></script>
 
-<script src="{{asset('assets/js/prism/prism.min.js')}}"></script>
+<!-- <script src="{{asset('assets/js/prism/prism.min.js')}}"></script>
 <script src="{{asset('assets/js/clipboard/clipboard.min.js')}}"></script>
 <script src="{{asset('assets/js/counter/jquery.waypoints.min.js')}}"></script>
 <script src="{{asset('assets/js/counter/jquery.counterup.min.js')}}"></script>
 <script src="{{asset('assets/js/counter/counter-custom.js')}}"></script>
 <script src="{{asset('assets/js/custom-card/custom-card.js')}}"></script>
-<script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script>
+<script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script> -->
 <script src="{{asset('assets/js/dashboard/dashboard_2.js')}}"></script>
 
 
 <script>
+var options2 = {
+    chart: {
+        height: 400,
+        type: 'bar',
+        toolbar:{
+          show: false
+        }
+    },
+    plotOptions: {
+        bar: {
+			borderRadius: 4,
+            horizontal: true,
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    series: [{
+        data: [300, 330, 348, 370, 440, 480, 590, 1000, 1100, 1280, 1380, 1480, 1580, 1680, 1780]
+    }],
+    xaxis: {
+        categories: ['OSM', 'QMT', 'PMS', 'CART', 'AS', 'NHTO', 'SWIDB', 'NRLMB', 'SB', 'DRMB', 'PDPB', 'SMS', 'IAS', 'IMC', 'HEMDS'],
+    },
+    colors:[ CubaAdminConfig.primary ]
+}
+
+var chart2 = new ApexCharts(
+    document.querySelector("#basic-bar1"),
+    options2
+);
+
+chart2.render();
+
 </script>
+
 @endsection
 

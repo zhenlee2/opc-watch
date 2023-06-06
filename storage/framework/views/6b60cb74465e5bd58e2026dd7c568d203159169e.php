@@ -106,7 +106,7 @@
                 autoload: true,
                 pageSize: 15,
                 pageButtonCount: 5,
-                deleteConfirm: "Do you really want to delete the client?",
+                deleteConfirm: "Do you really want to delete the indicator?",
                 controller: {
                     loadData: function(filter) {
                         var deferred = $.Deferred();

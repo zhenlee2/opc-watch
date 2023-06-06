@@ -38,7 +38,7 @@
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/dashboard' ? 'block;' : 'none;'); ?>">
 							<li><a class="lan-4 <?php echo e(Route::currentRouteName()=='index' ? 'active' : ''); ?>" href="<?php echo e(route('office')); ?>">Office</a></li>
                      		<li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('divisionreview')); ?>">Division</a></li>
-                     		<li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('show')); ?>">Show OPC</a></li>
+                     		<li><a class="lan-5 <?php echo e(Route::currentRouteName()=='dashboard-02' ? 'active' : ''); ?>" href="<?php echo e(route('divisionreview')); ?>"> OPC</a></li>
 						</ul>
 					</li> -->
 
@@ -82,6 +82,16 @@
 									<li><a href="<?php echo e(route('indicator')); ?>" class="<?php echo e(Route::currentRouteName()=='indicator' ? 'active' : ''); ?>">View Indicators</a></li>
 									<!--  -->
 	                        	</ul>
+							</li>
+
+							<li>
+								<a class="submenu-title <?php echo e(in_array(Route::currentRouteName(), ['offices']) ? 'active' : ''); ?>" href="#">DivisionLibrary
+									<div class="according-menu"><i class="fa fa-angle-<?php echo e(in_array(Route::currentRouteName(), ['datepicker', 'time-picker', 'datetimepicker','daterangepicker' ,'touchspin', 'select2', 'switch', 'typeahead', 'clipboard']) ? 'down' : 'right'); ?>"></i></div>
+								</a>
+								<ul class="nav-sub-childmenu submenu-content" style="display: <?php echo e(in_array(Route::currentRouteName(), ['datepicker', 'time-picker', 'datetimepicker','daterangepicker' ,'touchspin', 'select2', 'switch', 'typeahead', 'clipboard']) ? 'block' : 'none;'); ?>;">
+									<li><a href="<?php echo e(route('division')); ?>" class="<?php echo e(Route::currentRouteName()=='offices' ? 'active' : ''); ?>">View Division</a></li>
+									<!--  -->
+								</ul>
 							</li>
 						</ul>
 					</li>

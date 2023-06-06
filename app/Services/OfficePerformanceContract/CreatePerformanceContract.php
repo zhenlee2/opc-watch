@@ -19,11 +19,51 @@ class CreatePerformanceContract
 
         DB::beginTransaction();
 
+        // $currentMonth = date('m');
+
+        // if ($currentMonth >= 1 && $currentMonth <= 6) {
+        //     $pc = PerformanceContract::create([
+        //         'user_id' => auth()->user()->id,
+        //         'year' => now()->year,
+        //         'semester' => '1',
+        //         // 'activity_id' => $data[$i]['activity_id'],
+        //     ]);
+        // } elseif ($currentMonth >= 7 && $currentMonth <= 12) {
+        //     $pc = PerformanceContract::create([
+        //         'user_id' => auth()->user()->id,
+        //         'year' => now()->year,
+        //         'semester' => '2',
+        //         // 'activity_id' => $data[$i]['activity_id'],
+        //     ]);
+        // }
+
+        // !$pc ?? $flag = false;
+
+        // $pctrack = PCIndicatorTrack::create([
+        //     'pc_id' => $pc->id
+        // ]);
+
+        // !$pctrack ?? $flag = false;
+
         for ($i=0; $i < count($data); $i++) { 
-            $pc = PerformanceContract::create([
-                'user_id' => auth()->user()->id,
-                'activity_id' => $data[$i]['activity_id'],
-            ]);
+    
+            $currentMonth = date('m');
+
+            if ($currentMonth >= 1 && $currentMonth <= 6) {
+                $pc = PerformanceContract::create([
+                    'user_id' => auth()->user()->id,
+                    'year' => now()->year,
+                    'semester' => '1',
+                    'activity_id' => $data[$i]['activity_id'],
+                ]);
+            } elseif ($currentMonth >= 7 && $currentMonth <= 12) {
+                $pc = PerformanceContract::create([
+                    'user_id' => auth()->user()->id,
+                    'year' => now()->year,
+                    'semester' => '2',
+                    'activity_id' => $data[$i]['activity_id'],
+                ]);
+            }
     
             !$pc ?? $flag = false;
     
@@ -32,7 +72,7 @@ class CreatePerformanceContract
             ]);
     
             !$pctrack ?? $flag = false;
-    
+
             if (isset($data[$i]['indicator'])) {
                 for ($j=0; $j < count($data[$i]['indicator']); $j++) { 
                     $indicator = PCIndicator::create([
