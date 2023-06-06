@@ -616,9 +616,10 @@
                             'Your file has been saved.',
                             'success'
                         )
-                        $('#createPCModal').modal('hide');
+                        // location.reload();
+                        // $('#createPCModal').modal('hide');
                         setTimeout(() => {
-                            // location.reload();
+                            location.reload();
                         }, 1000);
                     },
                     error: function(error){
@@ -631,6 +632,7 @@
                 });
             }
         })
+        
     }
 </script>
 @endsection
