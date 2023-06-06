@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Division extends Model
 {
-    protected $table = 'category';
+    protected $table = 'lib_division';
 
     protected $fillable = [
         'name',
-        'total_weight_allocation'
+        'code'
     ];
 }

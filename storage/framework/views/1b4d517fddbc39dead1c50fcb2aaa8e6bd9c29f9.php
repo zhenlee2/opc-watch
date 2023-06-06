@@ -388,9 +388,7 @@
                             </div>
                             </div>
                         </div>
-                        </div>
-
-
+                    </div>
             </div>
             </div>
         </div>
@@ -465,25 +463,36 @@
             </div>
         </div>
 
-        <div id="right-history">
-                    <div class="modal-header p-l-20 p-r-20">
-                        <h6 class="modal-title w-100">Contact History<span class="pull-right"><a class="closehistory" href="#"><i class="icofont icofont-close"></i></a></span></h6>
+                        <div id="right-history">
+                            <div class="modal-header p-l-20 p-r-20">
+                                 <h6 class="modal-title w-100">Update History<span class="pull-right"><a class="closehistory" href="#"><i class="icofont icofont-close"></i></a></span></h6>
                             </div>
-                                <div class="history-details">
+                            <div class="history-details">
                                     <div class="text-center">
                                         <i class="icofont icofont-ui-edit"></i>
-                                        <p>Contact has not been modified yet.</p>
+                                        <p>Performance has not been modified yet.</p>
                                     </div>
                                 <div class="media">
                                     <i class="icofont icofont-star me-3"></i>
-                                <div class="media-body mt-0">
-                                    <h6 class="mt-0">Contact Created</h6>
-                                    <p class="mb-0">Contact is created via mail</p>
-                                <span class="f-12">Sep 10, 2019 4:00</span>
+                                    <div class="media-body mt-0">
+                                        <h6 class="mt-0">Performance Contract Created</h6>
+                                        <!-- <p class="mb-0">Contact is created via mail</p> -->
+                                        <span class="f-12"><p>Updated by: Joshua Quistadio</p></span>
+                                        <span class="f-12">Date Updated: Sep 10, 2019 4:00</span>
+                                    </div>
+                                </div>
+
+                                <div class="media">
+                                    <i class="icofont icofont-star me-3"></i>
+                                    <div class="media-body mt-0">
+                                        <h6 class="mt-0">Performance Contract Created</h6>
+                                        <!-- <p class="mb-0">Contact is created via mail</p> -->
+                                        <span class="f-12"><p>Updated by: Joshua Quistadio</p></span>
+                                        <span class="f-12">Date Updated: Sep 10, 2019 4:00</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>

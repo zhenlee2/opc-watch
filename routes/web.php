@@ -23,25 +23,24 @@ Route::get('auth/logout', 'AuthController@logout_request')->name('auth.logout');
 Route::prefix('performance_contract')->group(function () {
     Route::get('office', 'CreateofficeController@createpc')->name('createpc');
     Route::get('office/{year}/{semester}', 'CreateofficeController@showpc')->name('showpc');
-    Route::get('division', 'DivisionController@index')->name('division');
     Route::get('individual', 'OfficeController@individual')->name('individual');
     Route::post('save_indicator', 'CreateofficeController@save_indicator');
 });
-
 //PERFORMANCE CONTRACT REVIEW
 Route::prefix('performance_contract_review')->group(function () {
     Route::get('office', 'OfficereviewController@index')->name('office');
-    Route::get('office/{year}/{semester}', 'CreateofficeController@showpcr')->name('showpcr');
+    Route::get('officereview/{year}/{semester}', 'CreateofficeController@showpcr')->name('officereview');
     Route::get('divisionreview', 'DivisionreviewController@index')->name('divisionreview');
     });
 
 //Show OPC
-Route::get('/opcpage/showopc', 'ShowopcController@index')->name('show');
+// Route::get('/opcpage/showopc', 'ShowopcController@index')->name('show');
 
 //LIBRARIES
 Route::get('activity', 'ActivityController@index')->name('activity');
 Route::get('offices', 'OfficesController@index')->name('offices');
 Route::get('indicator', 'IndicatorController@index')->name('indicator');
+Route::get('division', 'DivisionController@index')->name('division');
 
 //Activity Controller
 Route::get('get_activity', 'ActivityController@list');
@@ -60,6 +59,12 @@ Route::get('get_indicator', 'IndicatorController@list');
 Route::post('store_indicator', 'IndicatorController@store');
 Route::post('update_indicator', 'IndicatorController@update');
 Route::post('delete_indicator', 'IndicatorController@delete');
+
+//Division Controller
+Route::get('get_division', 'DivisionController@list');
+Route::post('store_division', 'DivisionController@store');
+Route::post('update_division', 'DivisionController@update');
+Route::post('delete_division', 'DivisionController@delete');
 
 //Category Controller
 Route::get('get_category', 'CategoryController@list');

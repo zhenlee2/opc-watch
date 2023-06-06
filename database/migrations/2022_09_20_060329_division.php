@@ -15,7 +15,6 @@ class Division extends Migration
     {
         Schema::create('lib_division', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
             $table->string('name');
             $table->string('code');
             $table->rememberToken();

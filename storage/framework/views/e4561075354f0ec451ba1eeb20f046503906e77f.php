@@ -2,10 +2,10 @@
 <?php $__env->startSection('css'); ?>
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/animate.css')); ?>">
+<!-- <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/animate.css')); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/chartist.css')); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/owlcarousel.css')); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/prism.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/prism.css')); ?>"> -->
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/sweetalert2.min.css')); ?>">
 <?php $__env->stopSection(); ?>
 
@@ -50,7 +50,7 @@
                                                                     <th>Year</th>
                                                                     <th>Semester</th>
                                                                     <!-- <th>Final Rating</th> -->
-                                                                    <th>Adjectival Rating</th>
+                                                                    <th>Total Indicator</th>
                                                                     <th>Creator</th>
                                                                     <th>Date Created</th>
                                                                     
@@ -60,27 +60,27 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
-                                                                    <a href="<?php echo e(route('showpc', ['year' => '2022', 'semester' => '2'])); ?>" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
+                                                                    <a href="<?php echo e(route('showpc', ['year' => '2023', 'semester' => '1'])); ?>" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
                                                                         <!-- <a href="javascript:void(0)" class="btn btn-sm example-popover btn-primary icon-pencil form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View" ></a>
                                                                         <a href="javascript:void(0)" class="btn btn-sm example-popover btn-danger icon-trash form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Delete"></a> -->
                                                                     </td>
                                                                     <td>2022</td>
                                                                     <td>2nd</td>
                                                                     <!-- <td>4.89000</td> -->
-                                                                    <td>Very Satisfied</td>
+                                                                    <td>30</td>
                                                                     <td>Carolin Catalan</td>
                                                                     <td>2022/07/25</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                    <a href="<?php echo e(route('showpc', ['year' => '2023', 'semester' => '1'])); ?>" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
+                                                                    <a href="<?php echo e(route('showpc', ['year' => '2023', 'semester' => '2'])); ?>" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
                                                                         <!-- <a href="javascript:void(0)" class="btn btn-sm btn-primary icon-pencil "></a>
                                                                         <a href="javascript:void(0)" class="btn btn-sm btn-danger icon-trash "></a> -->
                                                                     </td>
                                                                     <td>2023</td>
                                                                     <td>1st</td>
                                                                     <!-- <td>4.96000</td> -->
-                                                                    <td>Very Satisfied</td>
+                                                                    <td>40</td>
                                                                     <td>Carolin Catalan</td>
                                                                     <td>2023/01/25</td>
                                                                 </tr>
@@ -377,43 +377,41 @@
 
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(asset('assets/js/select2/select2.full.min.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script>
+<!-- <script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script> -->
 <script src="<?php echo e(asset('assets/js/sweetalert2.all.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
 <!-- <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')); ?>"></script> -->
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/jszip.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/buttons.colVis.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/pdfmake.min.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/datatable/datatable-extension/vfs_fonts.js')); ?>"></script>
+<!-- <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/vfs_fonts.js')); ?>"></script> -->
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')); ?>"></script>
+<!-- <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')); ?>"></script> -->
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/buttons.print.min.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')); ?>"></script>
+<!-- <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')); ?>"></script> -->
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.keyTable.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.colReorder.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/datatable/datatable-extension/custom.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/typeahead/handlebars.js')); ?>"></script>
+<!-- <script src="<?php echo e(asset('assets/js/typeahead/handlebars.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/typeahead/typeahead.bundle.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/typeahead/typeahead.custom.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/typeahead-search/handlebars.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/typeahead-search/typeahead-custom.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/typeahead-search/typeahead-custom.js')); ?>"></script> -->
+<!-- <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script> -->
 <script src="<?php echo e(asset('assets/js/sweet-alert/sweetalert.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/select2/select2.full.min.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script>
+<!-- <script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script> -->
 <script src="<?php echo e(asset('assets/js/form-validation-custom.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/bookmark/jquery.validate.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/contacts/custom.js')); ?>"></script>
 <script>
     let data_arr = [];
-
     get_activity(1);
 
     $('#category-id').change(function() {
@@ -575,7 +573,7 @@
                             'Your file has been saved.',
                             'success'
                         )
-                        $('#createPCModal').modal('toggle');
+                        $('#createPCModal').modal('hide');
                         setTimeout(() => {
                             // location.reload();
                         }, 1000);

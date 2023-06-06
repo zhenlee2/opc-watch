@@ -1,11 +1,11 @@
 @extends('layouts.simple.master')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatable-extension.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatable-extension.css')}}"> -->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/chartist.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/chartist.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/owlcarousel.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/prism.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/prism.css')}}"> -->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/sweetalert2.min.css')}}">
 @endsection
 
@@ -250,6 +250,7 @@
 			</div>
 		</div>
 
+            <!-- MOV Modal -->
         <div class="modal fade" id="uploadMOVModal" tabindex="-1" role="dialog" aria-labelledby="uploadMOVModal" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 30%">
             <div class="modal-content">
@@ -273,6 +274,7 @@
             </div>
             </div>
         </div>
+        <!-- Een MOV Modal -->
 
         <div class="modal fade" id="createPCModal" tabindex="-1" role="dialog" aria-labelledby="createPCModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 60%">
@@ -363,6 +365,7 @@
                         </div>
                     </div>
                 </div>
+
 @endsection
 
 @section('script')
@@ -377,9 +380,9 @@
 <script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script>
+<!-- <script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
+<!-- <script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
@@ -389,18 +392,18 @@
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
-<script src="{{asset('assets/js/typeahead/handlebars.js')}}"></script>
+<!-- <script src="{{asset('assets/js/typeahead/handlebars.js')}}"></script>
 <script src="{{asset('assets/js/typeahead/typeahead.bundle.js')}}"></script>
 <script src="{{asset('assets/js/typeahead/typeahead.custom.js')}}"></script>
 <script src="{{asset('assets/js/typeahead-search/handlebars.js')}}"></script>
-<script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script>
-<script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
+<script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script> -->
+<!-- <script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script>
 <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
 <script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
 <script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script>
-<script src="{{asset('assets/js/contacts/custom.js')}}"></script>
+<script src="{{asset('assets/js/contacts/custom.js')}}"></script> -->
 <script>
     get_activity(1);
 
