@@ -32,7 +32,7 @@
 			<div class="tab-content" id="icon-tabContent">
 				<div class="tab-pane fade show active" id="icon-home" role="tabpanel" aria-labelledby="icon-home-tab">
 					<div class="row size-column">
-						<div class="col-xl-6 box-col-6 xl-50">
+						<div class="col-xl-3 box-col-3 xl-50">
 						<div class="row dash-chart">
 							<!-- <div class="col-xl-10 box-col-6 col-lg-12 col-md-6"> -->
 							<div class="card o-hidden">
@@ -46,8 +46,19 @@
 								</div>
 								</div>
 							</div>
+							<!-- <div class="card o-hidden"> -->
+								<!-- <div class="card-body"> -->
+								
+								<!-- </div> -->
+							<!-- </div> -->
+						</div>
+						</div>
+						<div class="col-xl-3 box-col-3 xl-50">
+						<div class="row dash-chart">
+							<!-- <div class="col-xl-10 box-col-6 col-lg-12 col-md-6"> -->
 							<div class="card o-hidden">
 								<div class="card-body">
+								<div class="ecommerce-widgets media">
 								<div class="media">
 									<div class="media-body">
 										<p><h5>Second Semester</h5></p>
@@ -61,8 +72,15 @@
 										</div>
 									</div>
 								</div>
+									<!-- <div class="ecommerce-box light-bg-primary"><i class="fa fa-heart" aria-hidden="true"></i></div> -->
+								</div>
 								</div>
 							</div>
+							<!-- <div class="card o-hidden"> -->
+								<!-- <div class="card-body"> -->
+								
+								<!-- </div> -->
+							<!-- </div> -->
 						</div>
 						</div>
 						<div class="col-xl-6 box-col-12 xl-100">
@@ -112,7 +130,7 @@ var options2 = {
         height: 400,
         type: 'bar',
         toolbar:{
-          show: false
+          show: true
         }
     },
     plotOptions: {
@@ -122,10 +140,10 @@ var options2 = {
         }
     },
     dataLabels: {
-        enabled: false
+        enabled: true
     },
     series: [{
-        data: [300, 330, 348, 370, 440, 480, 590, 1000, 1100, 1280, 1380, 1480, 1580, 1680, 1780]
+        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     }],
     xaxis: {
         categories: ['OSM', 'QMT', 'PMS', 'CART', 'AS', 'NHTO', 'SWIDB', 'NRLMB', 'SB', 'DRMB', 'PDPB', 'SMS', 'IAS', 'IMC', 'HEMDS'],

@@ -21,7 +21,7 @@ class PerformanceContract extends Model
         'semester',
     ];
     
-    public function performance_contract()
+    public function performance_contract_indicator()
     {
         return $this->hasMany(pc_indicator::class, 'pc_id', 'id');
     }

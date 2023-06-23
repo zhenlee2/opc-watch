@@ -9,7 +9,7 @@ use App\Models\PCIndicatorTrack;
 use Illuminate\Support\Facades\DB;
 
 
-class ShowPerformanceContract
+class UpdatePerformanceContract
 {
     public function execute()
     {

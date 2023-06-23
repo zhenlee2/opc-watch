@@ -1,11 +1,11 @@
 @extends('layouts.simple.master')
 @section('css')
-<!-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatable-extension.css')}}"> -->
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatable-extension.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<!-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/chartist.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/chartist.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/owlcarousel.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/prism.css')}}"> -->
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/prism.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/sweetalert2.min.css')}}">
 @endsection
 
@@ -52,9 +52,14 @@
                                                         <div>
                                                             <table class="table table-bordered table-sm"> 
                                                                 <tr>
+                                                              
                                                                     <th class="col-sm-1 col-form-label p-2">Created by :</th>
-                                                                    <th class="col-sm-2 col-form-label p-2"></th>
-
+                                                                @foreach ($data as $d)
+                                                                    @if(!empty($d)==1)
+                                                                    <th class="col-sm-2 col-form-label p-2">{{$d->fname}} {{$d->lname}}</th>
+                                                                    @break
+                                                                    @endif
+                                                                @endforeach
                                                                     <th class="col-sm-1 col-form-label p-2">ID No.:</th>
                                                                     <th class="col-sm-2 col-form-label p-2"></th>
                                                                     
@@ -127,7 +132,7 @@
                                                                     <div class="text-center">{{ $d->accountability_center }}</div>
                                                             </div></td>
                                                             <td  scope="col" class="col-sm p-0" align="center">
-                                                                <button class="btn btn-success btn-sm" type="button" data-bs-original-title="Update" data-bs-toggle="modal" data-bs-target="#createPCModal"><span class="icon-save-alt"></span></button>
+                                                                <button class="btn btn-success btn-sm" type="button" data-bs-original-title="Update" data-bs-toggle="modal" data-bs-target="#updatePCModal"><span class="icon-save-alt"></span></button>
                                                             </td>
                                                         </tr>
                                                     @endif
@@ -251,13 +256,13 @@
 		</div>
 
             <!-- MOV Modal -->
-        <div class="modal fade" id="uploadMOVModal" tabindex="-1" role="dialog" aria-labelledby="uploadMOVModal" aria-hidden="true">
+        <!-- <div class="modal fade" id="uploadMOVModal" tabindex="-1" role="dialog" aria-labelledby="uploadMOVModal" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 30%">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="createPCModalLabel" >Upload MOVs</h5>
+                    <h5 class="modal-title text-center" id="createPCModalLabel" >Upload MOVs</h5> -->
                     <!-- <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                </div>
+                <!-- </div>
                     <form action="" id="frm" name="frm" method="POST">
                         <div class="modal-body">
                         <form method="POST" action="/upload" enctype="multipart/form-data">
@@ -273,9 +278,10 @@
                     </form>
             </div>
             </div>
-        </div>
+        </div> -->
         <!-- Een MOV Modal -->
 
+        <!-- Create Modal -->
         <div class="modal fade" id="createPCModal" tabindex="-1" role="dialog" aria-labelledby="createPCModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 60%">
             <div class="modal-content">
@@ -285,9 +291,24 @@
                 </div>
                     <form action="" id="frm" name="frm" method="POST">
                         <div class="modal-body">
-                            <div class="mb-2">
+                            <!-- <div class="mb-2"> -->
                                 <div class="col-form-label">Select KRA Category</div>
-                                <select id="category-id" class="form-control" >
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <select id="category-id" class="form-select">
+                                            <optgroup label="Categories">
+                                                @if(!empty($category))
+                                                @foreach ($category as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                            </optgroup>
+                                                @endif
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                                <!-- <select id="category-id" class="form-select">
                                     <optgroup label="Categories">
                                         @if(!empty($category))
                                         @foreach ($category as $item)
@@ -295,8 +316,9 @@
                                         @endforeach
                                     </optgroup>
                                         @endif
-                                </select>
-                            </div>
+                                </select> -->
+                                
+                            <!-- </div> -->
                             <div class="mb-2">
                                 <div class="col-form-label">Select Objectives, Program, Project and Activity</div>
                                 <select id="activity-id" class="form-control">
@@ -345,26 +367,199 @@
             </div>
             </div>
         </div>
+        <!-- End of Create Modal -->
+        
+        <!-- Update Modal -->
+        <div class="modal fade" id="updatePCModal" tabindex="-1" role="dialog" aria-labelledby="updatePCModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="max-width: 50%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updatePCModalLabel">Update Performance Contract</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <form action="" id="frm" name="frm" method="POST">
+                        <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                <div class="form theme-form">
+                                    <!-- <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <label>Project Title</label>
+                                        <input class="form-control" type="text" placeholder="Project name *">
+                                        </div>
+                                    </div>
+                                    </div> -->
+                                    <!-- <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <label>Client name</label>
+                                        <input class="form-control" type="text" placeholder="Name client or company name">
+                                        </div>
+                                    </div>
+                                    </div> -->
+                                    <div class="row">
+                                    <!-- <div class="col-sm-4">
+                                        <div class="mb-3">
+                                        <label>Project Rate</label>
+                                        <input class="form-control" type="text" placeholder="Enter project Rate">
+                                        </div>
+                                    </div> -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-2">
+                                            <label>Select KRA Category</label>
+                                            <select class="form-select">
+                                                <option>Hourly</option>
+                                                <option>Fix price</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-2">
+                                            <label>Select Objectives, Program, Project and Activity</label>
+                                            <select class="form-select">
+                                                <option>Low</option>
+                                                <option>Medium</option>
+                                                <option>High</option>
+                                                <option>Urgent</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                                <div class="mb-2">
+                                                <label>Select Indicator Code #</label>
+                                                <select class="form-select">
+                                                    <option>Small</option>
+                                                    <option>Medium</option>
+                                                    <option>Big</option>
+                                                </select>
+                                                </div>
+                                            </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-2">
+                                            <label>Sub Weight Allocation</label>
+                                            <input class="form-control" type="text" placeholder="Enter project Rate">
+                                            </div>
+                                        </div>
+                                    <!-- <div class="col-sm-4">
+                                        <div class="mb-3">
+                                        <label>Project Size</label>
+                                        <select class="form-select">
+                                            <option>Small</option>
+                                            <option>Medium</option>
+                                            <option>Big</option>
+                                        </select>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="col-sm-4">
+                                        <div class="mb-3">
+                                        <label>Starting date</label>
+                                        <input class="datepicker-here form-control" type="text" data-language="en">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="mb-3">
+                                        <label>Ending date</label>
+                                        <input class="datepicker-here form-control" type="text" data-language="en">
+                                        </div>
+                                    </div> -->
+                                    </div>
+                                    <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <label>Target Indicator Description</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <label>Quantity</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <label>Quality</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <label>Timeliness</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-2">
+                                            <label>Alloted Budget (in Php)</label>
+                                                <input class="form-control" type="text" placeholder="Enter project Rate">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-2">
+                                            <label>Accountability Center</label>
+                                                <select class="form-select">
+                                                    <option>Small</option>
+                                                    <option>Medium</option>
+                                                    <option>Big</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal">Close</button>
+                                    <button class="btn btn-secondary btn-sm" type="submit" id="add-button">Add</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                    </form>
+            </div>
+            </div>
+        </div> 
+        <!-- End of Update Modal -->
 
+        <!-- History Modal -->
         <div id="right-history">
                     <div class="modal-header p-l-20 p-r-20">
-                        <h6 class="modal-title w-100">Contact History<span class="pull-right"><a class="closehistory" href="#"><i class="icofont icofont-close"></i></a></span></h6>
+                        <h6 class="modal-title w-100">Perfomance Contract History<span class="pull-right"><a class="closehistory" href="#"><i class="icofont icofont-close"></i></a></span></h6>
                             </div>
                                 <div class="history-details">
                                     <div class="text-center">
                                         <i class="icofont icofont-ui-edit"></i>
-                                        <p>Contact has not been modified yet.</p>
+                                        <p>Perfomance Contract has not been modified yet.</p>
                                     </div>
                                 <div class="media">
                                     <i class="icofont icofont-star me-3"></i>
-                                <div class="media-body mt-0">
-                                    <h6 class="mt-0">Contact Created</h6>
-                                    <p class="mb-0">Contact is created via mail</p>
-                                <span class="f-12">Sep 10, 2019 4:00</span>
-                            </div>
+                                <a type="button">
+                                    <div class="media-body mt-0">
+                                        <h6 class="mt-0">Performance Contract Created</h6>
+                                            <!-- <p class="mb-0">Contact is created via mail</p> -->
+                                        <span class="f-12">Updated by: Joshua Quistadio</span>
+                                        <span class="f-12">Date Updated: January 10, 20 8:00 AM</span>
+                                    </div>
+                                </a>    
                         </div>
                     </div>
                 </div>
+        <!-- End of History Modal -->
 
 @endsection
 
@@ -397,13 +592,13 @@
 <script src="{{asset('assets/js/typeahead/typeahead.custom.js')}}"></script>
 <script src="{{asset('assets/js/typeahead-search/handlebars.js')}}"></script>
 <script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script> -->
-<!-- <script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
+<script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script>
-<script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
-<script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
-<script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
-<script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script>
-<script src="{{asset('assets/js/contacts/custom.js')}}"></script> -->
+<!-- <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/js/select2/select2-custom.js')}}"></script> -->
+<!-- <script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
+<script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script> -->
+<script src="{{asset('assets/js/contacts/custom.js')}}"></script>
 <script>
     get_activity(1);
 

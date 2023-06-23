@@ -411,6 +411,7 @@
 <script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
 <script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script>
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
+
 <script>
     let data_arr = [];
     // get_activity(1);
@@ -471,7 +472,7 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, save it!'
+            confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
                 const idxObj = data_arr.findIndex(object => {
