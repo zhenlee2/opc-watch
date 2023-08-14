@@ -46,11 +46,11 @@
                                                     <div class="table-responsive">
                                                         <a href="{{route('createpc')}}" class="btn btn-primary btn-sm update-contact btn-sm" data-bs-original-title="Cancel" type="button"><span class="icon-arrow-left"></span></a>
                                                         <button href="#" onclick="history(0)" class="btn btn-primary btn-sm" data-bs-original-title="History" data-bs-dismiss="modal" type="button"><span class="fa fa-history"></span></button>
-                                                        <a href="{{route('print')}}" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></a>
+                                                        <a href="{{route('print', ['year' => $year, 'semester' => $semester])}}" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></a>
                                                         <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Update" type="button"><span class="icon-save-alt"></span></button>
                                                         <button class="btn btn-danger btn-sm deleteOfficepc pull-right" data-bs-original-title="Delete this OPC" type="button"><span class="icon-trash"></span></button>
                                                         <div>
-                                                            <table class="table table-bordered table-sm"> 
+                                                            <!-- <table class="table table-bordered table-sm"> 
                                                                 <tr>
                                                               
                                                                     <th class="col-sm-1 col-form-label p-2">Created by :</th>
@@ -66,7 +66,7 @@
                                                                     <th class="col-sm-1 col-form-label p-2">Date Created:</th>
                                                                     <th class="col-sm-2 col-form-label p-2"></th>
                                                                     
-                                                                <tr>
+                                                            </tr>
                                                                 <tr>
                                                                     <th class="col-sm-1 col-form-label p-2">Division :</th>
                                                                     <th class="col-sm-2 col-form-label p-2"></th>
@@ -76,8 +76,8 @@
                                                                     
                                                                     <th class="col-sm-1 col-form-label p-2">Semester:</th>
                                                                     <th class="col-sm-2 col-form-label p-2"></th>
-                                                                <tr>                  
-                                                            </table>
+                                                                </tr>                  
+                                                            </table> -->
                                                         </div>
                                                             <table class="table table-bordered table-xs">                
                                                                 <thead>

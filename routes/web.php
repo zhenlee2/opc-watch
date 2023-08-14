@@ -13,6 +13,7 @@ Route::get('/', function () {
 })->name('/');
  // Wala pa mahuman ang home
 Route::get('login', 'LoginController@index')->name('login');
+Route::get('home', 'HomeController@index')->name('home');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::post('auth/login', 'AuthController@login_request')->name('auth.login');
 Route::get('auth/logout', 'AuthController@logout_request')->name('auth.logout');
@@ -31,6 +32,12 @@ Route::prefix('performance_contract_review')->group(function () {
     Route::get('office', 'OfficereviewController@index')->name('office');
     Route::get('officereview/{year}/{semester}', 'CreateofficeController@showpcr')->name('officereview');
     Route::get('divisionreview', 'DivisionreviewController@index')->name('divisionreview');
+    });
+
+Route::prefix('gender_and_development')->group(function () {
+    Route::get('gad', 'GenderDevelopmentController@index')->name('gad');
+    // Route::get('officereview/{year}/{semester}', 'CreateofficeController@showpcr')->name('officereview');
+    // Route::get('divisionreview', 'DivisionreviewController@index')->name('divisionreview');
     });
 
 //Show OPC
@@ -69,7 +76,7 @@ Route::post('delete_division', 'DivisionController@delete');
 //Category Controller
 Route::get('get_category', 'CategoryController@list');
 
-Route::get('print', 'PrintController@index')->name('print');
+Route::get('print/{year}/{semester}', 'PrintController@index')->name('print');
 Route::get('users', 'UserController@index')->name('users');
 
 Route::get('get_countindicator', 'DashboardController@PCindicatorcount');

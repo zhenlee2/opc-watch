@@ -50,6 +50,7 @@
                                                                 <tr><th>Action</th>
                                                                     <th>Year</th>
                                                                     <th>Semester</th>
+                                                                    <th>Total Approve Indicator</th>
                                                                     <th>Final Rating</th>
                                                                     <th>Adjectival Rating</th>
                                                                     <th>Creator</th>
@@ -57,33 +58,20 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach ($list as $l)
                                                                 <tr>
                                                                     <td>
-                                                                    <a href="{{route('officereview', ['year' => '2024', 'semester' => '3'])}}" class="btn btn-light btn-sm example-popover form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
-                                                                        <!-- <a href="#" onclick="editContact(0)" class="btn btn-light btn-sm example-popover form-control" href="#" onclick="editContact(0)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a> -->
-                                                                        <!-- <a href="javascript:void(0)" class="btn btn-sm example-popover btn-primary icon-pencil form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View" ></a>
-                                                                        <a href="javascript:void(0)" class="btn btn-sm example-popover btn-danger icon-trash form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Delete"></a> -->
-                                                                    </td>
-                                                                    <td>2022</td>
-                                                                    <td>2nd</td>
-                                                                    <td>4.89000</td>
-                                                                    <td>Very Satisfied</td>
-                                                                    <td>Carolin Catalan</td>
-                                                                    <td>2022/07/25</td>
+                                                                    <a href="{{route('officereview', ['year' => $l->year, 'semester' => $l->semester])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
+                                                                        </td>
+                                                                        <td>{{ $l->year }}</td>
+                                                                        <td>{{ $l->semester }}</td>
+                                                                        <td>{{ $l->total_indicator }}</td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>{{ $l->fullname }}</td>
+                                                                        <td>{{ $l->created_at }}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                    <a href="{{route('officereview', ['year' => '2024', 'semester' => '3'])}}" class="btn btn-light btn-sm example-popover form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
-                                                                        <!-- <a href="javascript:void(0)" class="btn btn-sm btn-primary icon-pencil "></a>
-                                                                        <a href="javascript:void(0)" class="btn btn-sm btn-danger icon-trash "></a> -->
-                                                                    </td>
-                                                                    <td>2023</td>
-                                                                    <td>1st</td>
-                                                                    <td>4.96000</td>
-                                                                    <td>Very Satisfied</td>
-                                                                    <td>Carolin Catalan</td>
-                                                                    <td>2023/01/25</td>
-                                                                </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -97,7 +85,7 @@
                                         <div class="table-responsive">
                                             <button class="btn btn-primary btn-sm update-contact " data-bs-original-title="Cancel" type="button"><span class="icon-arrow-left"></span></button>
                                             <button href="#" onclick="history(0)" class="btn btn-primary btn-sm" data-bs-original-title="Rating history" data-bs-dismiss="modal" type="button"><span class="icon-timer"></span></button>
-                                            <button href="{{route('print')}}" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></button>
+                                            <button href="#" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></button>
                                             <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Approve Rating" type="button"><span class="icon-check-box"></span></button>
                                         <div>
                                                             <table class="table table-bordered table-sm"> 
@@ -189,7 +177,7 @@
                                                 </tbody>
                                                 <tbody>
                                                     <tr id="total_weight">
-                                                        <!-- <td colspan=""></td> -->
+                                                        <td colspan=""></td>
                                                         <td name="total_weight">Total Weight:</td>
                                                         <td colspan="8"></td>
                                                     </tr>
@@ -243,53 +231,7 @@
                                                     <option value="2"><h5>Second Semester</h5></option>
                                             </select>
                                         </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-xs">                
-                                                <thead>
-                                                    <tr align="center">
-                                                        <th colspan="2">KEY RESULTS AREA</th>
-                                                        <th rowspan="2" class="col-sm-4 col-form-label">PERFORMANCE INDICATOR </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">ALLOTTED BUDGET (in Php <i class="icofont icofont-cur-peso"></i>)</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-3 col-form-label">ACCOUNTABILITY CENTER </br> (<i class="icofont icofont-company"></i> Division, <i class="icofont icofont-unity-hand"></i> Units, <i class="icofont icofont-user-alt-4"></i> Individuals)</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label"><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button></th>
-                                                        
-                                                    </tr>
-                                                    <tr align="center" > 
-                                                        <th scope="col" class="col-sm-2 col-form-label"><i class="icofont icofont-trophy"></i> Objectives, Program, Project, Activity</th>
-                                                        <th scope="col" class="col-sm-1 col-form-label"><i class="icofont icofont-chart-pie"></i> Weight Allocation</th>                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >STRATEGIC PRIORITIES</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >50%</td>
-                                                        <td colspan="6" style="background-color: rgb(128, 128, 128)" ></td>
-                                                    </tr>
-                                                </tbody>
-                                                <tbody id="strategic2"></tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)">CORE FUNCTIONS</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >35%</td>
-                                                        <td colspan="5" style="background-color: rgb(128, 128, 128)" ></td>                       
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)">SUPPORT FUNCTIONS</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >15%</td>
-                                                        <td colspan="5" style="background-color: rgb(128, 128, 128)" ></td>    
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr id="total_weight">
-                                                        <td colspan="1"></td>
-                                                        <td name="total_weight">Total Weight:</td>
-                                                        <td colspan="4"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                      
                                     </div>        
                                 </div>
                             </div>
@@ -300,75 +242,6 @@
                         <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
-                                                    <div class="row">
-                                                            <div class="col-md-4 mb-3">
-                                                            </div>
-                                                            <div class="col-md-2 mb-3">
-                                                                <select class="form-select form-control-primary" name="select">
-                                                                    <option value="opt1">Select Year</option>
-                                                                    <option value="opt2">2022</option>
-                                                                    <option value="opt3">2023</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-2 mb-3">
-                                                                <select class="form-select form-control-primary" name="select">
-                                                                    <option value="0"><h5>Select Semester</h5></option>
-                                                                    <option value="1"><h5>First Semester</h5></option>
-                                                                    <option value="2"><h5>Second Semester</h5></option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-xs">                
-                                                <thead>
-                                                    <tr align="center">
-                                                        <th colspan="2">KEY RESULTS AREA</th>
-                                                        <th rowspan="2" class="col-sm-4 col-form-label">PERFORMANCE INDICATOR </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
-                                                        <th rowspan="2" class="col-sm-4 col-form-label">ACTUAL PERFORMANCE </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Quantity</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Quality</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Timeliness</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Average</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Weighted</br>Average</th>
-                                                        <!-- <th rowspan="2" scope="col" class="col-sm-1 col-form-label"><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button></th> -->
-                                                        
-                                                    </tr>
-                                                    <tr align="center" > 
-                                                        <th scope="col" class="col-sm-3 col-form-label"><i class="icofont icofont-trophy"></i> Objectives, Program, Project, Activity</th>
-                                                        <th scope="col" class="col-sm-1 col-form-label"><i class="icofont icofont-chart-pie"></i> Weight Allocation</th>                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >STRATEGIC PRIORITIES</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >50%</td>
-                                                        <td colspan="8" style="background-color: rgb(128, 128, 128)" ></td>
-                                                    </tr>
-                                                </tbody>
-                                                <tbody id="strategic2"></tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)">CORE FUNCTIONS</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >35%</td>
-                                                        <td colspan="8" style="background-color: rgb(128, 128, 128)" ></td>                       
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)">SUPPORT FUNCTIONS</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >15%</td>
-                                                        <td colspan="8" style="background-color: rgb(128, 128, 128)" ></td>    
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr id="total_weight">
-                                                        <td colspan="1"></td>
-                                                        <td name="total_weight">Total Weight:</td>
-                                                        <td colspan="4"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
                                     </div>        
                                 </div>
                             </div>   

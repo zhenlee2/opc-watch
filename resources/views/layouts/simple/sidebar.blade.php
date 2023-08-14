@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
 	<div>
 		<div class="logo-wrapper">
-			<a href="{{route('/')}}" ><h3><stroke>OPC-Watch</stroke></h3></a>
+			<a href="{{route('/')}}" ><h3><stroke>PLANNING IS</stroke></h3></a>
 			<!-- {{-- <h3>&nbsp&nbsp&nbspPDPS</h3> --}} -->
 			<div class="back-btn"><i class="fa fa-angle-left"></i></div>
 			<div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
@@ -34,16 +34,16 @@
                      		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('office')}}">Office Performance <br> Contract Review</a></li>
 						</ul>
 					</li>
-					<!-- <li class="sidebar-list">
-						<label class="badge badge-success"></label><a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/dashboard' ? 'active' : '' }}" href="#"><i data-feather="check-square"></i><span class="lan-3">Performance Contract &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReview</span>
+					<li class="sidebar-list">
+						<label class="badge badge-success"></label><a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/dashboard' ? 'active' : '' }}" href="#"><i data-feather="check-square"></i><span class="lan-3">Gender and Development</span>
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/dashboard' ? 'down' : 'right' }}"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/dashboard' ? 'block;' : 'none;' }}">
-							<li><a class="lan-4 {{ Route::currentRouteName()=='index' ? 'active' : '' }}" href="{{route('office')}}">Office</a></li>
-                     		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('divisionreview')}}">Division</a></li>
-                     		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('divisionreview')}}"> OPC</a></li>
+							<li><a class="lan-4 {{ Route::currentRouteName()=='index' ? 'active' : '' }}" href="{{route('gad')}}">GAD AR</a></li>
+                     		<!-- <li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('divisionreview')}}">Division</a></li>
+                     		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('divisionreview')}}"> OPC</a></li> -->
 						</ul>
-					</li> -->
+					</li>
 
 					<li class="sidebar-main-title">
 						<div>

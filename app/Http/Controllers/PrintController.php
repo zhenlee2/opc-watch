@@ -26,12 +26,14 @@ class PrintController extends Controller
     //     }
     // }    
 
-    public function index(ShowPerformanceContract $showPerformanceContract)
+    public function index(Request $request, ShowPerformanceContract $showPerformanceContract)
     {
         if(Auth::check()) {
+            $year = $request->year;
+            $semester = $request->semester;
             $user = Users::findOrFail(auth()->id());
             $category = Category::all();
-            $data = $showPerformanceContract->execute();
+            $data = $showPerformanceContract->execute($year, $semester);
             $indicator = Indicator::select('sort')->groupBy('sort')->get();
             // return dd($category);
             return view('pages.opcpage.officepcPrint', compact('category', 'indicator', 'data', 'user'));

@@ -51,22 +51,18 @@
                                                                     <th>Semester</th>
                                                                     <!-- <th>Final Rating</th> -->
                                                                     <th>Total Indicator</th>
+                                                                    <th>Ratification</th>
                                                                     <th>Creator</th>
                                                                     <th>Date Created</th>
-                                                                    
-                                                                    
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
+                                                                <!-- <tr>
                                                                     <td>
                                                                     <a href="{{route('showpc', ['year' => '2023', 'semester' => '1'])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
-                                                                        <!-- <a href="javascript:void(0)" class="btn btn-sm example-popover btn-primary icon-pencil form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View" ></a>
-                                                                        <a href="javascript:void(0)" class="btn btn-sm example-popover btn-danger icon-trash form-control" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Delete"></a> -->
                                                                     </td>
                                                                     <td>2022</td>
                                                                     <td>2nd</td>
-                                                                    <!-- <td>4.89000</td> -->
                                                                     <td>30</td>
                                                                     <td>Carolin Catalan</td>
                                                                     <td>2022/07/25</td>
@@ -74,16 +70,26 @@
                                                                 <tr>
                                                                     <td>
                                                                     <a href="{{route('showpc', ['year' => '2023', 'semester' => '2'])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
-                                                                        <!-- <a href="javascript:void(0)" class="btn btn-sm btn-primary icon-pencil "></a>
-                                                                        <a href="javascript:void(0)" class="btn btn-sm btn-danger icon-trash "></a> -->
                                                                     </td>
                                                                     <td>2023</td>
                                                                     <td>1st</td>
-                                                                    <!-- <td>4.96000</td> -->
                                                                     <td>40</td>
                                                                     <td>Carolin Catalan</td>
                                                                     <td>2023/01/25</td>
-                                                                </tr>
+                                                                </tr> -->
+                                                                @foreach ($list as $l)
+                                                                    <tr>
+                                                                        <td>
+                                                                        <a href="{{route('showpc', ['year' => $l->year, 'semester' => $l->semester])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
+                                                                        </td>
+                                                                        <td>{{ $l->year }}</td>
+                                                                        <td>{{ $l->semester }}</td>
+                                                                        <td>{{ $l->total_indicator }}</td>
+                                                                        <td></td>
+                                                                        <td>{{ $l->fullname }}</td>
+                                                                        <td>{{ $l->created_at }}</td>
+                                                                    </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
