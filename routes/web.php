@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    return redirect()->route('home');
 })->name('/');
  // Wala pa mahuman ang home
 Route::get('login', 'LoginController@index')->name('login');
@@ -26,6 +26,7 @@ Route::prefix('performance_contract')->group(function () {
     Route::get('office/{year}/{semester}', 'CreateofficeController@showpc')->name('showpc');
     Route::get('individual', 'OfficeController@individual')->name('individual');
     Route::post('save_indicator', 'CreateofficeController@save_indicator');
+    Route::post('update_indicator', 'CreateofficeController@update_indicator');
 });
 //PERFORMANCE CONTRACT REVIEW
 Route::prefix('performance_contract_review')->group(function () {
@@ -33,6 +34,8 @@ Route::prefix('performance_contract_review')->group(function () {
     Route::get('officereview/{year}/{semester}', 'CreateofficeController@showpcr')->name('officereview');
     Route::get('divisionreview', 'DivisionreviewController@index')->name('divisionreview');
     });
+
+// Route::post('/update-indicator/{id}', [PcController::class, 'update_indicator']);
 
 Route::prefix('gender_and_development')->group(function () {
     Route::get('gad', 'GenderDevelopmentController@index')->name('gad');

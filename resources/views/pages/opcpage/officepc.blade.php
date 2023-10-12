@@ -384,41 +384,42 @@
 
 @section('script')
 <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
-<!-- <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script> -->
 <script src="{{asset('assets/js/sweetalert2.all.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
-<!-- <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/jszip.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/buttons.colVis.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/pdfmake.min.js')}}"></script>
-<!-- <script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
-<!-- <script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
-<!-- <script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.keyTable.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.colReorder.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
-<!-- <script src="{{asset('assets/js/typeahead/handlebars.js')}}"></script>
-<script src="{{asset('assets/js/typeahead/typeahead.bundle.js')}}"></script>
-<script src="{{asset('assets/js/typeahead/typeahead.custom.js')}}"></script>
-<script src="{{asset('assets/js/typeahead-search/handlebars.js')}}"></script>
-<script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script> -->
-<!-- <script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script> -->
 <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script>
 <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
-<!-- <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script> -->
 <script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
 <script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script>
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
 
 <script>
+
+    // var date = new Date();
+
+    // $('.opc').on('change', function() {
+    //     const updatedId = $(this).attr('id');
+        
+    //     // Log the ID to the console
+    //     console.log('ID updated:', updatedId, 'at ', date);
+    // });
+
+    // Get History
+
+
     let data_arr = [];
     // get_activity(1);
 
@@ -501,6 +502,11 @@
         strategic_elem.empty();
         core_elem.empty();
         support_elem.empty();
+
+        let totalWeightStrategic = 0;
+        let totalWeightCore = 0;
+        let totalWeightSupport = 0;
+
         data_arr.forEach(e => {
             for (let i = 0; i < e.indicator.length; i++) {
                 let activityNameElement = '';
@@ -557,7 +563,15 @@
             }
             
         });
+        $('#totalWeightStrategic').text(totalWeightStrategic.toFixed(2));
+        $('#totalWeightCore').text(totalWeightCore.toFixed(2));
+        $('#totalWeightSupport').text(totalWeightSupport.toFixed(2))
+
+        $strategicweight = $('#totalWeightStrategic').text(totalWeightStrategic.toFixed(2));
+        console.log($strategicweight);
     }
+
+
     
     $("#frm").submit(function(event){
         event.preventDefault();
@@ -639,7 +653,6 @@
                 });
             }
         })
-        
     }
 </script>
 @endsection

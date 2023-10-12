@@ -14,7 +14,7 @@
       <div class="col-xl-7 p-0">
          <div class="login-card">
             <div>
-               <div ><a class="logo text-start" href="{{ route('home')}}"><h3>Login</h3></a></div>
+               <div ><a class="logo text-start" href="{{ route('home')}}"><h3>Back to Home</h3></a></div>
                <div class="login-main">
                   <form class="theme-form" method="POST" action="{{ route('auth.login')}}">
                      @csrf

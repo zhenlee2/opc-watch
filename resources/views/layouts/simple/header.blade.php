@@ -311,12 +311,12 @@
           <div class="media profile-media">
             <img class="b-r-10" src="{{asset('assets/images/dashboard/profile.jpg')}}" alt="">
             <div class="media-body">
-              <span>{{$user->fname}} {{$user->lname}}</span>
-            @if($user->role_id == 1)
+             
+          
               <p class="mb-0 font-roboto">Admin<i class="middle fa fa-angle-down"></i></p>
-            @else
+           
             <p class="mb-0 font-roboto">User<i class="middle fa fa-angle-down"></i></p>
-            @endif
+       
             </div>
           </div>
           <ul class="profile-dropdown onhover-show-div">

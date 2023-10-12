@@ -47,8 +47,8 @@
                                                         <a href="{{route('createpc')}}" class="btn btn-primary btn-sm update-contact btn-sm" data-bs-original-title="Cancel" type="button"><span class="icon-arrow-left"></span></a>
                                                         <button href="#" onclick="history(0)" class="btn btn-primary btn-sm" data-bs-original-title="History" data-bs-dismiss="modal" type="button"><span class="fa fa-history"></span></button>
                                                         <a href="{{route('print', ['year' => $year, 'semester' => $semester])}}" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></a>
-                                                        <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Update" type="button"><span class="icon-save-alt"></span></button>
-                                                        <button class="btn btn-danger btn-sm deleteOfficepc pull-right" data-bs-original-title="Delete this OPC" type="button"><span class="icon-trash"></span></button>
+                                                        <!-- <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Update" type="button"><span class="icon-save-alt"></span></button> -->
+                                                        <button class="btn btn-danger btn-sm deleteOfficepc pull-right" data-bs-original-title="Delete this OPC" onclick="delete_opc()" id="delete-opc" type="button"><span class="icon-trash"></span></button>
                                                         <div>
                                                             <!-- <table class="table table-bordered table-sm"> 
                                                                 <tr>
@@ -79,15 +79,15 @@
                                                                 </tr>                  
                                                             </table> -->
                                                         </div>
-                                                            <table class="table table-bordered table-xs">                
+                                                            <table id="datatable" class="table table-bordered table-xs">                
                                                                 <thead>
                                                                     <tr>
                                                                         <th colspan="2" class="text-center"><strong>KEY RESULTS AREA</strong></th>
                                                                         <th rowspan="2" class="col-sm-4 col-form-label text-center p-0"><strong>PERFORMANCE INDICATOR </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</strong></th>
                                                                         <th rowspan="2" scope="col" class="col-sm-1 col-form-label text-center p-0"><strong>ALLOTTED BUDGET (in Php <i class="icofont icofont-cur-peso"></i>)</strong></th>
                                                                         <th rowspan="2" scope="col" class="col-sm-2 col-form-label text-center p-0"><strong>ACCOUNTABILITY CENTER </br> (<i class="icofont icofont-company"></i> Division, <i class="icofont icofont-unity-hand"></i> Units, <i class="icofont icofont-user-alt-4"></i> Individuals)</strong></th>
-                                                                        <th rowspan="2" class="col-sm-1 text-center p-0"><button class="btn btn-primary btn-sm" type="button" data-bs-original-title="Add Performance Contract" data-bs-toggle="modal" data-bs-target="#createPCModal"><span class="fa fa-plus-square-o"></span></button></th>
-                                                                        
+                                                                        <!-- <th rowspan="2" class="col-sm-1 text-center p-0"><button class="btn btn-primary btn-sm" type="button" data-bs-original-title="Add Performance Contract" data-bs-toggle="modal" data-bs-target="#createPCModal"><span class="fa fa-plus-square-o"></span></button></th> -->
+                                                                        <th rowspan="2" class="col-sm-1 text-center p-0"></th>
                                                                     </tr>
                                                                     <tr> 
                                                                         <th scope="col" class="col-sm-2 col-form-label text-center p-0"><strong><i class="icofont icofont-trophy"></i> Objectives, Program, Project, Activity</strong></th>
@@ -102,37 +102,40 @@
                                                                     </tr>
                                                                 </tbody>
                                                                 <tbody id="strategic2">
+                                                                    
                                                 @foreach ($data as $d)
                                                     @if ($d->indicator_id == 1)
                                                         <tr>
                                                             <td class="p-0" >
-                                                                <div class="text-center m-1">{{ $d->name }}</div>
+                                                            <div class="text-center m-1 hidden" data-category="Strategic Priorities"></div>
+                                                                <div class="text-center m-1 hidden" data-id="{{$d->id}}"></div>
+                                                                <div class="text-center m-1" data-name="{{$d->name}}">{{ $d->name }}</div>
                                                             </td>
                                                             <td class="p-0" >
                                                                 <div class="row p-0 m-1">
-                                                                        <div class="text-center">{{ $d->sub_weight_allocation }}</div>
+                                                                        <div class="text-center sub-weight" data-sub="{{$d->sub_weight_allocation}}">{{ $d->sub_weight_allocation }}</div>
                                                                 </div>
                                                             </td>
                                                             <td class="p-0"><div class="row">
-                                                                <div class="col-1 text-center p-0 m-1">{{ $d->sort }}</div>
+                                                                <div class="col-1 text-center p-0 m-1" data-sort="{{$d->sort}}">{{ $d->sort }}</div>
                                                                 <div class="col-10 p-0">
-                                                                    <div class="m-1"><strong>{{ $d->target_indicator_desc}}</strong></div>
-                                                                    <div class="m-1"><strong>Ql:</strong> {{ $d->quantity }}</div>
-                                                                    <div class="m-1"><strong>Qn:</strong> {{ $d->quality }}</div>
-                                                                    <div class="m-1"><strong>T:</strong> {{ $d->timeliness }}</div>
+                                                                    <div class="m-1" data-target="{{$d->target_indicator_desc}}"><strong>{{ $d->target_indicator_desc}}</strong></div>
+                                                                    <div class="m-1" data-quantity="{{$d->quantity}}"><strong>Ql:</strong> {{ $d->quantity }}</div>
+                                                                    <div class="m-1" data-quality="{{$d->quality}}"><strong>Qn:</strong> {{ $d->quality }}</div>
+                                                                    <div class="m-1" data-timeliness="{{$d->timeliness}}"><strong>T:</strong> {{ $d->timeliness }}</div>
                                                                 </div>
                                                             </div></td>
                                                             <td class="p-0">
                                                                 <div class="row m-1 p-0">
-                                                                        <div class="text-center"> {{ $d->alloted_budget }}</div>
+                                                                        <div class="text-center alloted-budget" data-alloted="{{$d->alloted_budget}}"> {{ $d->alloted_budget }}</div>
                                                                 </div>
                                                             </td>
 
                                                             <td class="p-0"><div class="row m-1">
-                                                                    <div class="text-center">{{ $d->accountability_center }}</div>
+                                                                    <div class="text-center" data-center="{{$d->accountability_center}}">{{ $d->accountability_center }}</div>
                                                             </div></td>
                                                             <td  scope="col" class="col-sm p-0" align="center">
-                                                                <button class="btn btn-success btn-sm" type="button" data-bs-original-title="Update" data-bs-toggle="modal" data-bs-target="#updatePCModal"><span class="icon-save-alt"></span></button>
+                                                                <button class="btn btn-success btn-sm" type="submit" id="view" onclick="get_indicator()" data-bs-original-title="Update" data-bs-toggle="modal" data-idUpdate="'.$d->id.'"data-bs-target="#editModal"><span class="icon-save-alt"></span></button>
                                                             </td>
                                                         </tr>
                                                     @endif
@@ -150,37 +153,39 @@
                                                     
                                                 @foreach ($data as $d)
                                                     @if ($d->indicator_id == 2)
-                                                        <tr>
+                                                    <tr>
                                                             <td class="p-0" >
-                                                                <div class="text-center m-1">{{ $d->name }}</div>
+                                                            <div class="text-center m-1 hidden" data-category="CORE FUNCTIONS"></div>
+                                                                <div class="text-center m-1 hidden" data-id="{{$d->id}}"></div>
+                                                                <div class="text-center m-1" data-name="{{$d->name}}">{{ $d->name }}</div>
                                                             </td>
                                                             <td class="p-0" >
                                                                 <div class="row p-0 m-1">
-                                                                        <div class="text-center">{{ $d->sub_weight_allocation }}</div>
+                                                                        <div class="text-center sub-weight" data-sub="{{$d->sub_weight_allocation}}">{{ $d->sub_weight_allocation }}</div>
                                                                 </div>
                                                             </td>
                                                             <td class="p-0"><div class="row">
-                                                                <div class="col-1 text-center p-0 m-1">{{ $d->sort }}</div>
+                                                                <div class="col-1 text-center p-0 m-1" data-sort="{{$d->sort}}">{{ $d->sort }}</div>
                                                                 <div class="col-10 p-0">
-                                                                    <div class="m-1"><strong>{{ $d->target_indicator_desc}}</strong></div>
-                                                                    <div class="m-1"><strong>Ql:</strong> {{ $d->quantity }}</div>
-                                                                    <div class="m-1"><strong>Qn:</strong> {{ $d->quality }}</div>
-                                                                    <div class="m-1"><strong>T:</strong> {{ $d->timeliness }}</div>
+                                                                    <div class="m-1" data-target="{{$d->target_indicator_desc}}"><strong>{{ $d->target_indicator_desc}}</strong></div>
+                                                                    <div class="m-1" data-quantity="{{$d->quantity}}"><strong>Ql:</strong> {{ $d->quantity }}</div>
+                                                                    <div class="m-1" data-quality="{{$d->quality}}"><strong>Qn:</strong> {{ $d->quality }}</div>
+                                                                    <div class="m-1" data-timeliness="{{$d->timeliness}}"><strong>T:</strong> {{ $d->timeliness }}</div>
                                                                 </div>
                                                             </div></td>
                                                             <td class="p-0">
                                                                 <div class="row m-1 p-0">
-                                                                        <div class="text-center"> {{ $d->alloted_budget }}</div>
+                                                                        <div class="text-center alloted-budget" data-alloted="{{$d->alloted_budget}}"> {{ $d->alloted_budget }}</div>
                                                                 </div>
                                                             </td>
 
                                                             <td class="p-0"><div class="row m-1">
-                                                                    <div class="text-center">{{ $d->accountability_center }}</div>
+                                                                    <div class="text-center" data-center="{{$d->accountability_center}}">{{ $d->accountability_center }}</div>
                                                             </div></td>
                                                             <td  scope="col" class="col-sm p-0" align="center">
-                                                                <button class="btn btn-success btn-sm" type="button" data-bs-original-title="Update" data-bs-toggle="modal" data-bs-target="#createPCModal"><span class="icon-save-alt"></span></button>
+                                                                <button class="btn btn-success btn-sm" type="submit" id="view" onclick="get_indicator()" data-bs-original-title="Update" data-bs-toggle="modal" data-idUpdate="'.$d->id.'"data-bs-target="#editModal"><span class="icon-save-alt"></span></button>
                                                             </td>
-                                                        </tr>    
+                                                        </tr>
                                                     @endif
                                                 @endforeach
                                                 </tbody>
@@ -195,35 +200,37 @@
                                                     
                                                 @foreach ($data as $d)
                                                     @if ($d->indicator_id == 3)
-                                                        <tr>
-                                                        <td class="p-0" >
-                                                                <div class="text-center m-1">{{ $d->name }}</div>
+                                                    <tr>
+                                                            <td class="p-0" >
+                                                            <div class="text-center m-1 hidden" data-category="SUPPORT FUNCTION"></div>
+                                                                <div class="text-center m-1 hidden" data-id="{{$d->id}}"></div>
+                                                                <div class="text-center m-1" data-name="{{$d->name}}">{{ $d->name }}</div>
                                                             </td>
                                                             <td class="p-0" >
                                                                 <div class="row p-0 m-1">
-                                                                        <div class="text-center">{{ $d->sub_weight_allocation }}</div>
+                                                                        <div class="text-center sub-weight" data-sub="{{$d->sub_weight_allocation}}">{{ $d->sub_weight_allocation }}</div>
                                                                 </div>
                                                             </td>
                                                             <td class="p-0"><div class="row">
-                                                                <div class="col-1 text-center p-0 m-1">{{ $d->sort }}</div>
-                                                                <div class="col-10 p-0 ">
-                                                                    <div class="m-1"><strong>{{ $d->target_indicator_desc}}</strong></div>
-                                                                    <div class="m-1"><strong>Ql:</strong> {{ $d->quantity }}</div>
-                                                                    <div class="m-1"><strong>Qn:</strong> {{ $d->quality }}</div>
-                                                                    <div class="m-1"><strong>T:</strong> {{ $d->timeliness }}</div>
+                                                                <div class="col-1 text-center p-0 m-1" data-sort="{{$d->sort}}">{{ $d->sort }}</div>
+                                                                <div class="col-10 p-0">
+                                                                    <div class="m-1" data-target="{{$d->target_indicator_desc}}"><strong>{{ $d->target_indicator_desc}}</strong></div>
+                                                                    <div class="m-1" data-quantity="{{$d->quantity}}"><strong>Ql:</strong> {{ $d->quantity }}</div>
+                                                                    <div class="m-1" data-quality="{{$d->quality}}"><strong>Qn:</strong> {{ $d->quality }}</div>
+                                                                    <div class="m-1" data-timeliness="{{$d->timeliness}}"><strong>T:</strong> {{ $d->timeliness }}</div>
                                                                 </div>
                                                             </div></td>
                                                             <td class="p-0">
                                                                 <div class="row m-1 p-0">
-                                                                        <div class="text-center"> {{ $d->alloted_budget }}</div>
+                                                                        <div class="text-center alloted-budget" data-alloted="{{$d->alloted_budget}}"> {{ $d->alloted_budget }}</div>
                                                                 </div>
                                                             </td>
 
                                                             <td class="p-0"><div class="row m-1">
-                                                                    <div class="text-center">{{ $d->accountability_center }}</div>
+                                                                    <div class="text-center" data-center="{{$d->accountability_center}}">{{ $d->accountability_center }}</div>
                                                             </div></td>
                                                             <td  scope="col" class="col-sm p-0" align="center">
-                                                                <button class="btn btn-success btn-sm" type="button" data-bs-original-title="Update" data-bs-toggle="modal" data-bs-target="#createPCModal"><span class="icon-save-alt"></span></button>
+                                                                <button class="btn btn-success btn-sm" type="submit" id="view" onclick="get_indicator()" data-bs-original-title="Update" data-bs-toggle="modal" data-idUpdate="'.$d->id.'"data-bs-target="#editModal"><span class="icon-save-alt"></span></button>
                                                             </td>
                                                         </tr>
                                                     @endif
@@ -233,12 +240,16 @@
                                                 <tbody>
                                                     <tr id="total_weight" class="p-0">
                                                         <!-- <td colspan="1"></td> -->
-                                                        <td name="total_weight" class="text-center p-0">Total Weight:</td>
-                                                        <td colspan="5"></td>
+                                                        <td name="" class="text-center p-0"><h6>Total Weight: </h6></td>
+                                                        <td name="total_weight_value" id="total_weight_value" class="text-center p-0"></td>
+                                                        <td colspan="1"></td>
+                                                        <td name="alloted_weight_value" id="alloted_weight_value" class="text-center p-0"></td>
+                                                        <td colspan="2"></td>
                                                     </tr>
                                                 </tbody>
                                                             </table>
-                                                            <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Update" type="button"><span class="icon-save-alt"></span></button>
+                                                            <!-- <button class="btn btn-success btn-sm saveOfficepc pull-right editview" data-bs-original-title="Update" type="button"><span class="icon-save-alt"></span></button> -->
+                                                            <button class="btn btn-danger btn-sm pull-right" data-bs-original-title="Delete this OPC" onclick="delete_opc()" id="delete-opc" type="button"><span class="icon-trash"></span></button>
                                                             
                                                         </div>
                                                     </div>        
@@ -255,225 +266,56 @@
 			</div>
 		</div>
 
-            <!-- MOV Modal -->
-        <!-- <div class="modal fade" id="uploadMOVModal" tabindex="-1" role="dialog" aria-labelledby="uploadMOVModal" aria-hidden="true">
-            <div class="modal-dialog" role="document" style="max-width: 30%">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="createPCModalLabel" >Upload MOVs</h5> -->
-                    <!-- <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                <!-- </div>
-                    <form action="" id="frm" name="frm" method="POST">
-                        <div class="modal-body">
-                        <form method="POST" action="/upload" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="files[]" multiple>
-                            <button type="submit">Upload MOVs</button>
-                        </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-secondary btn-sm" type="submit" id="add-button">Add</button>
-                        </div>   
-                    </form>
-            </div>
-            </div>
-        </div> -->
-        <!-- Een MOV Modal -->
-
-        <!-- Create Modal -->
-        <div class="modal fade" id="createPCModal" tabindex="-1" role="dialog" aria-labelledby="createPCModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document" style="max-width: 60%">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createPCModalLabel">Add Performance Contract</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                    <form action="" id="frm" name="frm" method="POST">
-                        <div class="modal-body">
-                            <!-- <div class="mb-2"> -->
-                                <div class="col-form-label">Select KRA Category</div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <select id="category-id" class="form-select">
-                                            <optgroup label="Categories">
-                                                @if(!empty($category))
-                                                @foreach ($category as $item)
-                                                <option value="{{$item->id}}">{{$item->name}}</option>
-                                                @endforeach
-                                            </optgroup>
-                                                @endif
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                                <!-- <select id="category-id" class="form-select">
-                                    <optgroup label="Categories">
-                                        @if(!empty($category))
-                                        @foreach ($category as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                        @endforeach
-                                    </optgroup>
-                                        @endif
-                                </select> -->
-                                
-                            <!-- </div> -->
-                            <div class="mb-2">
-                                <div class="col-form-label">Select Objectives, Program, Project and Activity</div>
-                                <select id="activity-id" class="form-control">
-                                    <optgroup label="Activity Library">
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div class="mb-2">
-                                <div class="col-form-label">Select Indicator Code #</div>
-                                <select id="indicator-id" class="form-control">
-                                    <optgroup label="Code #">
-                                        <option selected></option>
-                                        @if(!empty($indicator))
-                                        @foreach ($indicator as $item)
-                                        <option value="{{$item->sort}}">{{$item->sort}}</option>
-                                        @endforeach
-                                        @endif
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div id="indicator" class="mb-2">
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-xs">                
-                                    <thead>
-                                        <tr align="center">
-                                            {{-- <th colspan="2">KEY RESULTS AREA</th> --}}
-                                            <th rowspan="2" class="col-sm-4 col-form-label">Sub Weight Allocation</th>
-                                            <th rowspan="2" class="col-sm-4 col-form-label">Target Indicator Description</th>
-                                            <th rowspan="2" class="col-sm-4 col-form-label">Quantity</th>
-                                            <th rowspan="2" class="col-sm-4 col-form-label">Quality</th>
-                                            <th rowspan="2" class="col-sm-4 col-form-label">Timeliness</th>
-                                            <th rowspan="2" scope="col" class="col-sm-1 col-form-label">ALLOTTED BUDGET (in Php)</th>
-                                            <th rowspan="2" scope="col" class="col-sm-3 col-form-label">ACCOUNTABILITY CENTER (Division, Units, Individuals)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="strategic1"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-secondary btn-sm" type="submit" id="add-button">Add</button>
-                        </div>   
-                    </form>
-            </div>
-            </div>
-        </div>
-        <!-- End of Create Modal -->
-        
+          
         <!-- Update Modal -->
-        <div class="modal fade" id="updatePCModal" tabindex="-1" role="dialog" aria-labelledby="updatePCModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="updatePCModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 50%">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="updatePCModalLabel">Update Performance Contract</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="" id="frm" name="frm" method="POST">
+                    <form action="" id="editform" name="editform" method="POST">
                         <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-body">
                                 <div class="form theme-form">
-                                    <!-- <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                        <label>Project Title</label>
-                                        <input class="form-control" type="text" placeholder="Project name *">
-                                        </div>
-                                    </div>
-                                    </div> -->
-                                    <!-- <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                        <label>Client name</label>
-                                        <input class="form-control" type="text" placeholder="Name client or company name">
-                                        </div>
-                                    </div>
-                                    </div> -->
                                     <div class="row">
-                                    <!-- <div class="col-sm-4">
-                                        <div class="mb-3">
-                                        <label>Project Rate</label>
-                                        <input class="form-control" type="text" placeholder="Enter project Rate">
-                                        </div>
-                                    </div> -->
                                         <div class="col-sm-6">
                                             <div class="mb-2">
                                             <label>Select KRA Category</label>
-                                            <select class="form-select">
-                                                <option>Hourly</option>
-                                                <option>Fix price</option>
-                                            </select>
+                                            <input class="form-control" name="category-name" id="category-name" type="text" >
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-2">
                                             <label>Select Objectives, Program, Project and Activity</label>
-                                            <select class="form-select">
-                                                <option>Low</option>
-                                                <option>Medium</option>
-                                                <option>High</option>
-                                                <option>Urgent</option>
-                                            </select>
+                                            <input name="activity-name" id="activity-name" type="text" class="form-control" >
                                             </div>
                                         </div>
-                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
                                                 <div class="mb-2">
-                                                <label>Select Indicator Code #</label>
-                                                <select class="form-select">
-                                                    <option>Small</option>
-                                                    <option>Medium</option>
-                                                    <option>Big</option>
-                                                </select>
+                                                <label>Indicator Code #</label>
+                                                <input class="form-control" name="indicator-code" id="indicator-code" type="text" >
                                                 </div>
                                             </div>
                                         <div class="col-sm-6">
                                             <div class="mb-2">
                                             <label>Sub Weight Allocation</label>
-                                            <input class="form-control" type="text" placeholder="Enter project Rate">
+                                            <input class="form-control" name="subWa" id="subWa" type="text">
                                             </div>
                                         </div>
-                                    <!-- <div class="col-sm-4">
-                                        <div class="mb-3">
-                                        <label>Project Size</label>
-                                        <select class="form-select">
-                                            <option>Small</option>
-                                            <option>Medium</option>
-                                            <option>Big</option>
-                                        </select>
-                                        </div>
-                                    </div> -->
-                                    <!-- <div class="col-sm-4">
-                                        <div class="mb-3">
-                                        <label>Starting date</label>
-                                        <input class="datepicker-here form-control" type="text" data-language="en">
-                                        </div>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="mb-3">
-                                        <label>Ending date</label>
-                                        <input class="datepicker-here form-control" type="text" data-language="en">
-                                        </div>
-                                    </div> -->
-                                    </div>
+                                    
                                     <div class="row">
                                     <div class="col">
                                         <div class="mb-3">
                                         <label>Target Indicator Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        <textarea  name="targetIndicator" id="targetIndicator" type="text" class="form-control" rows="3"></textarea>
                                         </div>
                                     </div>
                                     </div>
@@ -481,7 +323,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                         <label>Quantity</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        <textarea class="form-control" name="quantity" id="quantity" type="text" rows="3"></textarea>
                                         </div>
                                     </div>
                                     </div>
@@ -489,7 +331,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                         <label>Quality</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        <textarea class="form-control" name="quality" id="quality" type="text" rows="3"></textarea>
                                         </div>
                                     </div>
                                     </div>
@@ -497,7 +339,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                         <label>Timeliness</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                        <textarea class="form-control" name="timeliness" id="timeliness" type="text" rows="3"></textarea>
                                         </div>
                                     </div>
                                     </div>
@@ -505,17 +347,13 @@
                                         <div class="col-sm-6">
                                             <div class="mb-2">
                                             <label>Alloted Budget (in Php)</label>
-                                                <input class="form-control" type="text" placeholder="Enter project Rate">
+                                                <input class="form-control" name="alloted" id="alloted" type="text" >
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-2">
                                             <label>Accountability Center</label>
-                                                <select class="form-select">
-                                                    <option>Small</option>
-                                                    <option>Medium</option>
-                                                    <option>Big</option>
-                                                </select>
+                                            <input class="form-control" name="center" id="center" type="text" >
                                             </div>
                                         </div>
                                     </div>
@@ -523,13 +361,12 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal">Close</button>
-                                    <button class="btn btn-secondary btn-sm" type="submit" id="add-button">Add</button>
+                                    <button class="btn btn-secondary btn-sm editButton" type="submit"  id="editButton">Update</button>
                                 </div>
                             </div>
                             </div>
                         </div>
                         </div>
-                        
                     </form>
             </div>
             </div>
@@ -600,7 +437,7 @@
 <script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script> -->
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
 <script>
-    get_activity(1);
+    // get_activity(1);
 
     $('#category-id').change(function() {
         let cat_id = $(this).val();
@@ -623,117 +460,214 @@
             });
         });
     }
-    
-    function get_indicator(indi_id) {
-        let data = $('#strategic1')
-        data.empty();
-        $.get(BASE_URL + "ajax/get_indicator/" + indi_id, function(res){
-            res.forEach(e => {
-                data.append('<tr>' +
-                                '<input type="hidden" name="indicator[]" value="'+e.id+'" />'+
-                                '<td><input type="hidden" name="weight[]" value="'+e.sub_weight_allocation+'"/>'+e.sub_weight_allocation+'</td>'+
-                                '<td><input type="hidden" name="target[]" value="'+e.target_indicator_desc+'"/>'+e.target_indicator_desc+'</td>'+
-                                '<td><input type="hidden" name="qual[]" value="'+e.quantity+'"/>'+e.quantity+'</td>'+
-                                '<td><input type="hidden" name="quan[]" value="'+e.quality+'"/>'+e.quality+'</td>'+
-                                '<td><input type="hidden" name="time[]" value="'+e.timeliness+'"/>'+e.timeliness+'</td>'+
-                                '<td><input type="text" class="form-control" name="budget[]" /></td>'+
-                                '<td><input type="hidden" name="office[]" value="'+e.name+'"/>'+e.name+'</td>'+
-                            '</tr>')
-            })
-        });
+</script>
+<script>
+
+    function get_indicator() {
+        console.log("Hello");
+        var row = $(event.target).closest('tr');
+
+        var category = row.find('[data-category]').data('category');
+        var id = row.find('[data-id]').data('id');
+        var name = row.find('[data-name]').data('name');
+        var sub = row.find('[data-sub]').data('sub');
+        var sort = row.find('[data-sort]').data('sort');
+        var target = row.find('[data-target]').data('target');
+        var quantity = row.find('[data-quantity]').data('quantity');
+        var quality = row.find('[data-quality]').data('quality');
+        var timeliness = row.find('[data-timeliness]').data('timeliness');
+        var alloted = row.find('[data-alloted]').data('alloted');
+        var center = row.find('[data-center]').data('center');
+        
+        console.log("category");
+        // console.log(category, id, name, sub, sort, target, quantity, quality, timeliness, alloted, center);
+
+        $('#category-name').val(category);
+        $('#activity-name').val(name);
+        $('#subWa').val(sub);
+        $('#indicator-code').val(sort);
+        $('#targetIndicator').val(target);
+        $('#quantity').val(quantity);
+        $('#quality').val(quality);
+        $('#timeliness').val(timeliness);
+        $('#alloted').val(alloted);
+        $('#center').val(center);
+
+    $("#editButton").click(function(event) {
+        event.preventDefault();
+        var dataToSend = {
+            id: id,
+            category: $('#category-name').val(),
+            name: $('#activity-name').val(),
+            sub: $('#subWa').val(),
+            sort: $('#indicator-code').val(),
+            target: $('#targetIndicator').val(),
+            quantity: $('#quantity').val(),
+            quality: $('#quality').val(),
+            timeliness: $('#timeliness').val(),
+            alloted: $('#alloted').val(),
+            center: $('#center').val()
+        };
+        console.log(dataToSend);
+        // Check if dataToSend is not empty before sending the request
+        if (Object.keys(dataToSend).length > 0) {
+            Swal.fire({
+                title: 'Are you sure you want to Update?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Update it!'
+            }).then((result) => {
+                console.log(dataToSend);
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: BASE_URL + 'performance_contract/update_indicator',
+                        type: 'POST',
+                        data: dataToSend,
+                        success: function(response) {
+                            Swal.fire(
+                                'Confirm!',
+                                'Your file has been saved.',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
+                        },
+                        error: function(error) {
+                            Swal.fire(
+                                'Failed!',
+                                'Your file has no changes',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        } else {
+            console.log('Data to send is empty');
+        }
+    });
+}
+   
+    // Assuming data_arr and indicator_code are defined somewhere in your code
+
+    // Function to delete an item
+    function delete_opc() {
+        console.log("Delete");
+        data_arr=1;
+        if(Object.keys(data_arr).length > 0){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const idxObj = data_arr.findIndex(object => {
+                        return object.indicator_code == indicator_code;
+                    });
+
+                    data_arr.splice(idxObj, 1);
+                    $(`#indicator-id>optgroup>option[value=${indicator_code}]`).removeAttr('disabled');
+                    generatePCElement();
+                }
+            });
+        }else{
+            console.log('Data to send is empty');
+            Swal.fire(
+                                'Failed!',
+                                'Your file are empty',
+                                'error'
+                            );
+        }
     }
 
-    $("#frm").submit(function(event){
-        event.preventDefault();
+    // Attach the click event to the delete button
+    $(document).ready(function () {
+        $("#deleteButton").click(function () {
+            delete_opc();
+        });
+    });
 
-        if($("#indicator-id").val() == '') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Please select indicator code!',
-            })
-        } else {
-            let data = {
-                'category_id': $('#category-id').val(),
-                'activity_id': $('#activity-id').val(),
-                'category_name': $('#category-id option:selected').attr('data-name'),
-                'activity_name': $('#activity-id option:selected').attr('data-name'),
-                'indicator_code': $('#indicator-id').val(),
-                'indicator': $("input[name='indicator[]']").map(function(){return $(this).val();}).get(),
-                'weight': $("input[name='weight[]']").map(function(){return $(this).val();}).get(),
-                'target': $("input[name='target[]']").map(function(){return $(this).val();}).get(),
-                'qual': $("input[name='qual[]']").map(function(){return $(this).val();}).get(),
-                'quan': $("input[name='quan[]']").map(function(){return $(this).val();}).get(),
-                'time': $("input[name='time[]']").map(function(){return $(this).val();}).get(),
-                'budget_alloted': $("input[name='budget[]']").map(function(){return $(this).val();}).get(),
-                'office': $("input[name='office[]']").map(function(){return $(this).val();}).get(),
-            };
-            data_arr.push(data);
-            console.log(data_arr);
-            let strategic_elem = $('#strategic2');
-            let core_elem = $('#core2');
-            let support_elem = $('#support2');
 
-            strategic_elem.empty();
-            core_elem.empty();
-            support_elem.empty();
+    $(document).ready(function () {
+        // Function to calculate total weight for a specific category
+        function calculateTotalWeight(categoryId) {
+            var totalWeight = 0;
 
-            data_arr.forEach(e => {
-                for (let i = 0; i < e.indicator.length; i++) {
-                    let activityNameElement = '';
-                    if (i == 0) {
-                        activityNameElement =  '<td class="p-0" rowspan='+e.indicator.length+'>' +
-                        '<div class="text-center m-1">'+e.activity_name+'</div>' +
-                        '</td>';    
-                    }
+            $('#' + categoryId + ' .sub-weight').each(function () {
+                var subWeight = parseFloat($(this).data('sub'));
 
-                    let strategicElement = '<tr>' + activityNameElement+
-                    '<td class="p-0" >' +
-                    '<div class="row p-0 m-1">' +
-                    '<div class="text-center">'+e.weight[i]+'</div>' +
-                    '</div>' +
-                    '</td>' +
-                    '<td class="p-0"><div class="row">' +
-                    '<div class="col-1 text-center p-0 m-1">'+e.indicator_code+'</div>' +
-                    '<div class="col-10 p-0 m-1">' +
-                    '<div ><strong>'+e.target[i]+'</strong></div>' +
-                    '<div class="m-1"><strong>Ql:</strong>'+e.quan[i]+'</div>' +
-                    '<div class="m-1"><strong>Qn:</strong>'+e.qual[i]+'</div>' +
-                    '<div class="m-1"><strong>T:</strong>'+e.time[i]+'</div>' +
-                    '</div>' +
-                    '</div></td>' +
-                    '<td class="p-0">' +
-                    '<div class="row m-1 p-0">' +
-                    '<div class="text-center"> '+e.budget_alloted[i]+'</div>' +
-                    '</div>' +
-                    '</td>' + '<td class="p-0"><div class="row m-1">' +
-                    '<div class="text-center">'+e.office[i]+'</div>' +
-                    '</div></td>' +
-                    '<td></td>' +
-                    '</tr>';
-
-                    switch (e.category_id) {
-                        case '1':
-                            strategic_elem.append(strategicElement);
-                            break;
-                        case '2':
-                            core_elem.append(strategicElement);
-                            break;
-                        case '3':
-                            support_elem.append(strategicElement);
-                            break;
-                        default:
-                            console.log('error');
-                            break;
-                    }
-                    
+                if (!isNaN(subWeight)) {
+                    totalWeight += subWeight;
                 }
-                
             });
-            $('#createPCModal').modal('toggle');
-           
-            
+
+            return totalWeight;
         }
+
+        // Calculate and update total weights
+        var totalStrategicWeight = calculateTotalWeight('strategic2');
+        var totalCoreWeight = calculateTotalWeight('core2');
+        var totalSupportWeight = calculateTotalWeight('support2');
+
+        console.log(totalStrategicWeight ,"hello");
+        console.log(totalCoreWeight ,"hello");
+        console.log(totalSupportWeight ,"hello");
+
+        
+
+        // Update the total weight in the HTML
+       
+        $('#total_weight_value').text(totalStrategicWeight + totalCoreWeight + totalSupportWeight);
+    });
+
+    $(document).ready(function () {
+        // Function to calculate total weight for a specific category
+        function calculateBudgetAllocation(categoryId) {
+            var totalBudget = 0;
+
+            $('#' + categoryId + ' .alloted-budget').each(function () {
+                var subBudget = parseFloat($(this).data('alloted'));
+
+                if (!isNaN(subBudget)) {
+                    totalBudget += subBudget;
+                }
+            });
+
+            return totalBudget;
+        }
+
+        // Calculate and update total weights
+        var totalStrategicBudget= calculateBudgetAllocation('strategic2');
+        var totalCoreBudget = calculateBudgetAllocation('core2');
+        var totalSupportBudget = calculateBudgetAllocation('support2');
+
+        console.log(totalStrategicBudget ,"hello");
+        console.log(totalCoreBudget ,"hello");
+        console.log(totalSupportBudget ,"hello");
+
+        var totalBudget = totalStrategicBudget + totalCoreBudget + totalSupportBudget;
+
+        var formattedTotaltotalBudget = totalBudget.toLocaleString('en-US', {
+         style: 'currency',
+         currency: 'PHP', // Change this to your desired currency code
+         minimumFractionDigits: 2, // Adjust the precision as needed
+      });
+
+      $('#alloted_weight_value').text(formattedTotaltotalBudget);
+
+      console.log(totalBudget);
+        // Update the total weight in the HTML
+        // $('#total_weight_value').text(totalStrategicBudget + totalCoreBudge + totalSupportBudget);
     });
 </script>
 @endsection

@@ -270,6 +270,8 @@
             </div>
         </div>
 
+
+
 <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 60%">
        <div class="modal-content">
@@ -352,9 +354,9 @@
 <script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script>
+<!-- <script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
+<!-- <script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script> -->
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
@@ -364,17 +366,17 @@
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
-<script src="{{asset('assets/js/typeahead/handlebars.js')}}"></script>
+<!-- <script src="{{asset('assets/js/typeahead/handlebars.js')}}"></script>
 <script src="{{asset('assets/js/typeahead/typeahead.bundle.js')}}"></script>
 <script src="{{asset('assets/js/typeahead/typeahead.custom.js')}}"></script>
 <script src="{{asset('assets/js/typeahead-search/handlebars.js')}}"></script>
-<script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script>
+<script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script> -->
 <script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script>
-<script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
-<script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
-<script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
-<script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script>
+<!-- <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/js/select2/select2-custom.js')}}"></script> -->
+<!-- <script src="{{asset('assets/js/form-validation-custom.js')}}"></script>
+<script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script> -->
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
 <script>
     get_activity(1);
