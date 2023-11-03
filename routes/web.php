@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 Route::get('/', function () {
     return redirect()->route('home');
 })->name('/');
- // Wala pa mahuman ang home
+
 Route::get('login', 'LoginController@index')->name('login');
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
@@ -32,9 +32,12 @@ Route::prefix('performance_contract')->group(function () {
 Route::prefix('performance_contract_review')->group(function () {
     Route::get('office', 'OfficereviewController@index')->name('office');
     Route::get('officereview/{year}/{semester}', 'CreateofficeController@showpcr')->name('officereview');
-    Route::get('divisionreview', 'DivisionreviewController@index')->name('divisionreview');
+    // Route::get('individual', 'OfficeController@individual')->name('individual');
+    Route::post('save_rating', 'ShowopcrController@save_rating');
+    Route::post('update_rating', 'Showopcr@update_rating');
     });
 
+    Route::get('divisionreview', 'DivisionreviewController@index')->name('divisionreview');
 // Route::post('/update-indicator/{id}', [PcController::class, 'update_indicator']);
 
 Route::prefix('gender_and_development')->group(function () {

@@ -155,7 +155,7 @@
                                                     @if ($d->indicator_id == 2)
                                                     <tr>
                                                             <td class="p-0" >
-                                                            <div class="text-center m-1 hidden" data-category="CORE FUNCTIONS"></div>
+                                                                <div class="text-center m-1 hidden" data-category="CORE FUNCTIONS"></div>
                                                                 <div class="text-center m-1 hidden" data-id="{{$d->id}}"></div>
                                                                 <div class="text-center m-1" data-name="{{$d->name}}">{{ $d->name }}</div>
                                                             </td>
@@ -619,9 +619,9 @@
         var totalCoreWeight = calculateTotalWeight('core2');
         var totalSupportWeight = calculateTotalWeight('support2');
 
-        console.log(totalStrategicWeight ,"hello");
-        console.log(totalCoreWeight ,"hello");
-        console.log(totalSupportWeight ,"hello");
+        // console.log(totalStrategicWeight ,"hello");
+        // console.log(totalCoreWeight ,"hello");
+        // console.log(totalSupportWeight ,"hello");
 
         
 

@@ -78,137 +78,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="contact-editform ps-4">
-                                       <div class="col-sm-12">
-                                <!-- <div class="card"> -->
-                                    <!-- <div class="card-body"> -->
-                                        <div class="table-responsive">
-                                            <button class="btn btn-primary btn-sm update-contact " data-bs-original-title="Cancel" type="button"><span class="icon-arrow-left"></span></button>
-                                            <button href="#" onclick="history(0)" class="btn btn-primary btn-sm" data-bs-original-title="Rating history" data-bs-dismiss="modal" type="button"><span class="icon-timer"></span></button>
-                                            <button href="#" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></button>
-                                            <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Approve Rating" type="button"><span class="icon-check-box"></span></button>
-                                        <div>
-                                                            <table class="table table-bordered table-sm"> 
-                                                                <tr>
-                                                                    <th class="col-sm-1 col-form-label">Created by :</th>
-                                                                    <th class="col-sm-2 col-form-label"></th>
-                                                                    <!-- <td class="nopadding">
-                                                                        <input type="text" class="form-control input-xm borderless" value="" name="name">
-                                                                    </td> -->
-                                                                    <th class="col-sm-1 col-form-label">ID No.:</th>
-                                                                    <th class="col-sm-2 col-form-label"></th>
-                                                                    <!-- <td class="nopadding">
-                                                                        <input type="text" class="form-control input-sm borderless" value="" name="name">
-                                                                    </td> -->
-                                                                    <th class="col-sm-1 col-form-label">Date Created:</th>
-                                                                    <th class="col-sm-2 col-form-label"></th>
-                                                                    <!-- <td class="nopadding">
-                                                                        <input type="text" class="form-control input-sm borderless" value="" name="name">
-                                                                    </td> -->
-                                                                <tr>
-                                                                <tr>
-                                                                    <th class="col-sm-1 col-form-label">Division :</th>
-                                                                    <th class="col-sm-2 col-form-label"></th>
-                                                                    <!-- <td class="nopadding">
-                                                                        <input type="text" class="form-control input-sm borderless" value="" name="name">
-                                                                    </td> -->
-                                                                    <th class="col-sm-1 col-form-label">Section:</th>
-                                                                    <th class="col-sm-2 col-form-label"></th>
-                                                                    <!-- <td class="nopadding">
-                                                                        <input type="text" class="form-control input-sm borderless" value="" name="name">
-                                                                    </td> -->
-                                                                    <th class="col-sm-1 col-form-label">Semester:</th>
-                                                                    <th class="col-sm-2 col-form-label"></th>
-                                                                    <!-- <td class="nopadding">
-                                                                        <input type="text" class="form-control input-sm borderless" value="" name="name">
-                                                                    </td> -->
-                                                                <tr>                  
-                                                                
-                                                            </table>
-                                                        </div>
-                                            <table class="table table-bordered table-xs">                
-                                                <thead>
-                                                    <tr align="center">
-                                                        <th colspan="2">KEY RESULTS AREA</th>
-                                                        <th rowspan="2" class="col-sm-4 col-form-label">PERFORMANCE INDICATOR </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
-                                                        <th rowspan="2" class="col-sm-4 col-form-label">ACTUAL PERFORMANCE </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
-                                                        <th colspan="4">RATING</th>
-                                                        <th rowspan="2">REMARKS</th> 
-                                                        
-                                                        <!-- <th rowspan="2" scope="col" class="col-sm-1 col-form-label"><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button></th> -->
-                                                        
-                                                    </tr>
-                                                    <tr align="center" > 
-                                                        <th scope="col" class="col-sm-3 col-form-label"><i class="icofont icofont-trophy"></i> Objectives, Program, Project, Activity</th>
-                                                        <th scope="col" class="col-sm-1 col-form-label"><i class="icofont icofont-chart-pie"></i> Weight Allocation</th> 
-                                                        <th scope="col" class="col-sm-1 col-form-label">Quantity</br>Score</th> 
-                                                        <th scope="col" class="col-sm-1 col-form-label">Quality</br>Score</th> 
-                                                        <th scope="col" class="col-sm-1 col-form-label">Timeliness</br>Score</th> 
-                                                        <th scope="col" class="col-sm-1 col-form-label">Weighted</br>Average</th> 
-
-                                                        <!-- <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Quantity</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Quality</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Timeliness</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Average</br>Score</th>
-                                                        <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Weighted</br>Average</th>                     -->
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >STRATEGIC PRIORITIES</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >50%</td>
-                                                        <td colspan="8" style="background-color: rgb(128, 128, 128)" ></td>
-                                                    </tr>
-                                                </tbody>
-                                                <tbody id="strategic2"></tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)">CORE FUNCTIONS</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >35%</td>
-                                                        <td colspan="8" style="background-color: rgb(128, 128, 128)" ></td>                       
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)">SUPPORT FUNCTIONS</td>
-                                                        <td colspan="1" style="background-color: rgb(128, 128, 128)" >15%</td>
-                                                        <td colspan="8" style="background-color: rgb(128, 128, 128)" ></td>    
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr id="total_weight">
-                                                        <td colspan=""></td>
-                                                        <td name="total_weight">Total Weight:</td>
-                                                        <td colspan="8"></td>
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr id="total_weight">
-                                                        <td colspan="5"></td>
-                                                        <td colspan="2" name="">Final Rating:</td>
-                                                        <td colspan="2"></td>
-                                                    </tr>
-                                                </tbody>
-                                                <thead>
-                                                    <tr id="total_weight">
-                                                        <td colspan="5"></td>
-                                                        <td colspan="2" name="">Adjectival Rating: </td>
-                                                        <td colspan="2"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                            <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Approve Rating" type="button"><span class="icon-check-box"></span></button>
-                                        </div>
-                                    <!-- </div>         -->
-                                <!-- </div> -->
-                            </div>                  
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<!-- <p class="mb-0 m-t-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p> -->
-						</div>
-						<div class="tab-pane fade" id="profile-icon" role="tabpanel" aria-labelledby="profile-icon-tab">
+                                       
+						<!-- <div class="tab-pane fade" id="profile-icon" role="tabpanel" aria-labelledby="profile-icon-tab">
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -235,22 +106,22 @@
                                     </div>        
                                 </div>
                             </div>
-                        </div>   
+                        </div>    -->
 							<!-- <p class="mb-0 m-t-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p> -->
-						</div>
+						<!-- </div>
 						<div class="tab-pane fade" id="contact-icon" role="tabpanel" aria-labelledby="contact-icon-tab">
                         <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
                                     </div>        
                                 </div>
-                            </div>   
+                            </div>    -->
 							<!-- <p class="mb-0 m-t-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p> -->
-						</div>
+						<!-- </div> -->
 					</div>
 			</div>
 		</div>
-        <div id="right-history">
+        <!-- <div id="right-history">
             <div class="modal-header p-l-20 p-r-20">
                 <h6 class="modal-title w-100">Rating History<span class="pull-right"><a class="closehistory" href="#"><i class="icofont icofont-close"></i></a></span></h6>
                     </div>
@@ -268,78 +139,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-
-
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 60%">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLabel">Add Performance Contract</h5>
-             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-            <form action="" id="frm" name="frm" method="POST">
-                <div class="modal-body">
-                    <div class="mb-2">
-                        <div class="col-form-label">Select KRA Category</div>
-                        <select id="category-id" class="form-control" >
-                            <optgroup label="Categories">
-                                @if(!empty($category))
-                                @foreach ($category as $item)
-                                <option value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach
-                            </optgroup>
-                                @endif
-                        </select>
-                    </div>
-                    <div class="mb-2">
-                        <div class="col-form-label">Select Objectives, Program, Project and Activity</div>
-                        <select id="activity-id" class="form-control">
-                            <optgroup label="Activity Library">
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="mb-2">
-                        <div class="col-form-label">Select Indicator Code #</div>
-                        <select id="indicator-id" class="form-control">
-                            <optgroup label="Code #">
-                                <option selected></option>
-                                @if(!empty($indicator))
-                                @foreach ($indicator as $item)
-                                <option value="{{$item->sort}}">{{$item->sort}}</option>
-                                @endforeach
-                                @endif
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div id="indicator" class="mb-2">
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-xs">                
-                            <thead>
-                                <tr align="center">
-                                    {{-- <th colspan="2">KEY RESULTS AREA</th> --}}
-                                    <th rowspan="2" class="col-sm-4 col-form-label">Target Indicator Description</th>
-                                    <th rowspan="2" class="col-sm-4 col-form-label">Quantity</th>
-                                    <th rowspan="2" class="col-sm-4 col-form-label">Quality</th>
-                                    <th rowspan="2" class="col-sm-4 col-form-label">Timeliness</th>
-                                    <th rowspan="2" scope="col" class="col-sm-1 col-form-label">ALLOTTED BUDGET (in Php)</th>
-                                    <th rowspan="2" scope="col" class="col-sm-3 col-form-label">ACCOUNTABILITY CENTER (Division, Units, Individuals)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="strategic1"></tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-secondary" type="submit" id="add-button">Add</button>
-                </div>   
-            </form>
-       </div>
-    </div>
- </div> -->
 @endsection
 
 @section('script')

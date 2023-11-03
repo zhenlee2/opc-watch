@@ -3,10 +3,6 @@
 namespace App\Services\OfficePerformanceContract;
 
 use App\Models\PCIndicator;
-use App\Models\PerformanceContract;
-use App\Models\PCIndicatorTrack;
-
-use Illuminate\Support\Facades\DB;
 
 
 class ShowPerformanceContract

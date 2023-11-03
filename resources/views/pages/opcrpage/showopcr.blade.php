@@ -177,7 +177,7 @@
                                                             <td class="c" id="quality-Score" name="quality-Score" style="text-align: center;"></td>
                                                             <td id="quantity-Score" name="quantity-Score" style="text-align: center;"></td>
                                                             <td id="timeliness-Score" name="timeliness-Score" style="text-align: center;"></td>
-                                                            <td></td>
+                                                            <td id="average-val" namespace="average-val" style="text-align: center;"></td>
                                                             <td class="p-0" >
                                                                 <div class="m-1" id="remarks-val" name="remarks-val">
 
@@ -254,7 +254,7 @@
                                                                 <td class="c" id="quality-Score" name="quality-Score" style="text-align: center;"></td>
                                                                 <td id="quantity-Score" name="quantity-Score" style="text-align: center;"></td>
                                                                 <td id="timeliness-Score" name="timeliness-Score" style="text-align: center;"></td>
-                                                                <td></td>
+                                                                <td id></td>
                                                                 <td class="p-0" >
                                                                     <div class="m-1" id="remarks-val" name="remarks-val">
 
@@ -570,9 +570,7 @@
 <script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
-
 <script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
-
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
@@ -582,10 +580,8 @@
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
 <script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
-
 <script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script>
-
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
 
 <!-- MOV JS -->
@@ -610,32 +606,43 @@
         var category = row.find('[data-category]').data('category');
         var id = row.find('[data-id]').data('id');
 
-        console.log(category,id);
+        console.log(id);
 
         $("#editRating").click(function(event) {
         event.preventDefault();
-        console.log("Hello");
+        // console.log("Hello");
 
         // Retrieve data from form fields
         var targetIndicator = $('#targetIndicator').val();
         var quantity = $('#quantity').val();
         var quality = $('#quality').val();
         var timeliness = $('#timeliness').val();
-        var quantityScore = $('#quantityScore').val(); // Note: change the ID to match your actual ID
-        var qualityScore = $('#qualityScore').val(); // Note: change the ID to match your actual ID
-        var timelinessScore = $('#timelinessScore').val(); // Note: change the ID to match your actual ID
+        var quantityScore = parseInt($('#quantityScore').val()) || 0; // Note: change the ID to match your actual ID
+        var qualityScore = parseInt($('#qualityScore').val()) || 0; // Note: change the ID to match your actual ID
+        var timelinessScore = parseInt($('#timelinessScore').val()) || 0; // Note: change the ID to match your actual ID
         var remarks = $('#remarks').val();
 
-        $('#activity-name').text(targetIndicator);
-        $('#actual-Quantity').text(quantity);
-        $('#actual-Quality').text(quality);
-        $('#actual-Timeliness').text(timeliness);
-        $('#quality-Score').text(qualityScore);
-        $('#quantity-Score').text(quantityScore);
-        $('#timeliness-Score').text(timelinessScore);
-        $('#remarks-val').text(remarks);
+        // if(category == "CORE FUNCTIONS"){
+        //     if(id)
+                // $('#activity-name').text(targetIndicator);
+                // $('#actual-Quantity').text(quantity);
+                // $('#actual-Quality').text(quality);
+                // $('#actual-Timeliness').text(timeliness);
+                // $('#quality-Score').text(qualityScore);
+                // $('#quantity-Score').text(quantityScore);
+                // $('#timeliness-Score').text(timelinessScore);
+                // $('#remarks-val').text(remarks);
+        // }
+
+       
+
+        var average = (quantityScore+qualityScore+timelinessScore)/3;
+        console.log(average);
+        $('#average-val').text(average.toFixed(2));
+        // console.log(quantityScore+qualityScore);
 
         var dataToSend = {
+            pcindicator_id : id,
             targetIndicator : targetIndicator,
             quantity: quantity,
             quality: quality,
@@ -649,7 +656,7 @@
         console.log(dataToSend);
 
         // Check if dataToSend is not empty before sending the request
-        if (Object.keys(dataToSend).length < 0) {
+        if (Object.keys(dataToSend).length > 0) {
             Swal.fire({
                 title: 'Are you sure you want to Update?',
                 text: "You won't be able to revert this!",
@@ -659,13 +666,13 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, Update it!'
             }).then((result) => {
-                console.log(dataToSend);
+                // console.log(dataToSend);
                 if (result.isConfirmed) {
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: BASE_URL + 'performance_contract/update_indicator',
+                        url: BASE_URL + 'performance_contract_review/save_rating',
                         type: 'POST',
                         data: dataToSend,
                         success: function(response) {

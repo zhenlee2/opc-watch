@@ -5,6 +5,7 @@ namespace App\Services\OfficePerformanceContract;
 use App\Models\PCIndicator;
 use App\Models\PerformanceContract;
 use App\Models\PCIndicatorTrack;
+use App\Models\PerformanceContractReview;
 
 use Illuminate\Support\Facades\DB;
 
@@ -89,6 +90,13 @@ class CreatePerformanceContract
                     ]);
     
                     !$indicator ?? $flag = false;
+
+                    $pcr = PerformanceContractReview::create([
+                        'pcindicator_id' => $indicator->id
+                    ]);
+
+                    !$pcr ?? $flag = false;
+
                 }
             }
     
