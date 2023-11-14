@@ -31,9 +31,9 @@ Route::prefix('performance_contract')->group(function () {
 //PERFORMANCE CONTRACT REVIEW
 Route::prefix('performance_contract_review')->group(function () {
     Route::get('office', 'OfficereviewController@index')->name('office');
-    Route::get('officereview/{year}/{semester}', 'CreateofficeController@showpcr')->name('officereview');
+    Route::get('officereview/{year}/{semester}', 'OfficereviewController@showpcr')->name('officereview');
     // Route::get('individual', 'OfficeController@individual')->name('individual');
-    Route::post('save_rating', 'ShowopcrController@save_rating');
+    Route::post('save_rating', 'OfficereviewController@save_rating');
     Route::post('update_rating', 'Showopcr@update_rating');
     });
 

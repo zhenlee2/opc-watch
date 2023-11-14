@@ -186,37 +186,7 @@
                                                 </tbody>
                                                 <tbody id="core2">
                                                     
-                                                <!-- @foreach ($data as $d)
-                                                    @if ($d->indicator_id == 2)
-                                                    <tr>
-                                                            <td class="p-0" >
-                                                                <div class="text-center m-1">{{ $d->name }}</div>
-                                                            </td>
-                                                            <td class="p-0" >
-                                                                <div class="row p-0 m-1">
-                                                                        <div class="text-center">{{ $d->sub_weight_allocation }}</div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="p-0"><div class="row">
-                                                                <div class="col-1 text-center p-0 m-1">{{ $d->sort }}</div>
-                                                                <div class="col-10 p-0 m-1">
-                                                                    <div class="m-1"><strong>Ql:</strong> {{ $d->quantity }}</div>
-                                                                    <div class="m-1"><strong>Qn:</strong> {{ $d->quality }}</div>
-                                                                    <div class="m-1"><strong>T:</strong> {{ $d->timeliness }}</div>
-                                                                </div>
-                                                            </div></td>
-                                                            <td class="p-0">
-                                                                <div class="row m-1 p-0">
-                                                                        <div class="text-center"> {{ $d->alloted_budget }}</div>
-                                                                </div>
-                                                            </td>
-
-                                                            <td class="p-0"><div class="row m-1">
-                                                                    <div class="text-center">{{ $d->accountability_center }}</div>
-                                                            </div></td>
-                                                            <td></td>
-                                                    @endif
-                                                @endforeach -->
+                                               
                                                 </tbody>
                                                 <tbody>
                                                     <tr>
@@ -563,9 +533,7 @@
             }
             
         });
-        $('#totalWeightStrategic').text(totalWeightStrategic.toFixed(2));
-        $('#totalWeightCore').text(totalWeightCore.toFixed(2));
-        $('#totalWeightSupport').text(totalWeightSupport.toFixed(2))
+       
 
         $strategicweight = $('#totalWeightStrategic').text(totalWeightStrategic.toFixed(2));
         console.log($strategicweight);

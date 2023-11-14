@@ -56,26 +56,6 @@ class CreateofficeController extends Controller
 
     }
 
-    public function update_indicator(Request $request, UpdatePerformanceContract $updatePerformanceContract)
-    {
-       
-        $response = $updatePerformanceContract->execute($request);
-
-        if(!$response){
-            return response()->json([                
-                'status' => "error",
-                'description' => "Error encountered: No Changes",
-            ],404);
-        }
-        
-        return response()->json([                
-            'status' => "success",
-            'description' => "Successfully save indicator",
-            'data' => $response
-        ],200);
-
-
-    }
     
     public function showpc($year, $semester, ShowPerformanceContract $showPerformanceContract)
     {
@@ -83,13 +63,5 @@ class CreateofficeController extends Controller
         $user = Users::findOrFail(auth()->id());
         return view('pages.opcpage.showopc', compact('data', 'user', 'year', 'semester'));
     }
-
-    public function showpcr($year, $semester, ShowPerformanceContract $showPerformanceContract)
-    {
-        $data = $showPerformanceContract->execute($year, $semester);
-        $user = Users::findOrFail(auth()->id());
-        return view('pages.opcrpage.showopcr', compact('data', 'user', 'year', 'semester'));
-    }
-
 
 }

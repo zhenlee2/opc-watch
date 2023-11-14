@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\ShowPerformanceContractRating;
+namespace App\Services\OfficePerformanceContractReview;
 
 use App\Models\PerformanceContractReview;
 
@@ -9,11 +9,14 @@ class ShowPerformanceContractRating
 {
     public function execute($id)
     {
-        
-        $data = PerformanceContractReview::select('pcr.accom_indicator_desc', 'pcr.accom_quality', 'pcr.accom_quantity', 'pcr.accom_timeliness', 'pcr.rating_quality', 'pcr.rating_quantity', 'pcr.rating_timeliness', 'pc_indicator.target_indicator_desc', 'pcr.remarks')
+        // dd($id);
+        $data = PerformanceContractReview::select('pcr.id', 'pcr.pcindicator_id','pcr.accom_indicator_desc', 'pcr.accom_quality', 'pcr.accom_quantity', 'pcr.accom_timeliness', 'pcr.rating_quality', 'pcr.rating_quantity', 'pcr.rating_timeliness', 'pcr.remarks')
         ->where('pcr.pcindicator_id', '=', $id)
-        ->get();
+        ->first();
 
+        // dd($data);
+        // $data = PerformanceContractReview::all();
+        // dd('Hello');
         return $data;
     }
 

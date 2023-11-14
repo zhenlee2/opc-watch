@@ -10,6 +10,7 @@ use App\Models\Users;
 
 use App\Services\OfficePerformanceContractReview\ShowPerformanceContractRating;
 use App\Services\OfficePerformanceContractReview\PerformanceContractRating;
+use SebastianBergmann\Environment\Console;
 
 class ShowopcrController extends Controller
 {
@@ -18,52 +19,29 @@ class ShowopcrController extends Controller
        
         if(Auth::check()) {
             $user = Users::findOrFail(auth()->id());
-            $category = Category::all();
-            $data = $showPerformanceContractRating->execute($request->input('pcindicator_id'));
-
             $indicator = Indicator::select('sort')->groupBy('sort')->get();
-            return view('pages.opcrpage.showopcr', compact('category', 'indicator', 'data', 'user', 'year', 'semester'));
+            // $rating = $showPerformanceContractRating->execute($request->input('pcindicator_id'));
+            return view('pages.opcrpage.showopcr', compact('indicator', 'user'));
         }else {
             return redirect()->route('login');
         }
     }
 
-    public function save_rating(Request $request, PerformanceContractRating $PerformanceContractRating)
-    {
-        // dd($request);
+    // public function save_rating(Request $request, PerformanceContractRating $PerformanceContractRating)
+    // {
+    //     $response = $PerformanceContractRating->execute($request);
 
-        $response = $PerformanceContractRating->execute($request);
-
-        if(!$response){
-            return response()->json([                
-                'status' => "error",
-                'description' => "Error encountered: failed to save",
-            ],404);
-        }
+    //     if(!$response){
+    //         return response()->json([                
+    //             'status' => "error",
+    //             'description' => "Error encountered: failed to save",
+    //         ],404);
+    //     }
         
-        return response()->json([                
-            'status' => "success",
-            'description' => "Successfully save indicator",
-            'data' => $response
-        ],200);
-
-
-    }
-
-    public function update_rating()
-    {
-
-        // if(Auth::check()) {
-        //     $year = $request->year;
-        //     $semester = $request->semester;
-        //     $category = Category::all();
-        //     $data = $showPerformanceContract->execute($year, $semester);
-        //     // $data = $showPerformanceContract->execute();
-        //     $indicator = Indicator::select('sort')->groupBy('sort')->get();
-        //     $user = Users::findOrFail(auth()->id());
-        //     return view('pages.opcrpage.showopcr', compact('category', 'indicator', 'data', 'user', 'year', 'semester'));
-        // }else {
-        //     return redirect()->route('login');
-        // }
-    }
+    //     return response()->json([                
+    //         'status' => "success",
+    //         'description' => "Successfully save indicator",
+    //         'data' => $response
+    //     ],200);
+    // }
 }

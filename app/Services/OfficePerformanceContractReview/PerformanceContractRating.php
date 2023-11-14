@@ -2,9 +2,6 @@
 
 namespace App\Services\OfficePerformanceContractReview;
 
-use App\Models\PCIndicator;
-use App\Models\PerformanceContract;
-use App\Models\PCIndicatorTrack;
 use App\Models\PerformanceContractReview;
 
 use Illuminate\Support\Facades\DB;
@@ -17,7 +14,7 @@ class PerformanceContractRating
         
         $indicator_id = $fields['pcindicator_id'];
         $review = PerformanceContractReview::find($indicator_id);
-
+        // dd($fields['ratingaverage']),
         if ($review) {
             // DB::beginTransaction();
 
@@ -29,10 +26,9 @@ class PerformanceContractRating
                 'rating_quality' => $fields['qualityScore'],
                 'rating_quantity' => $fields['quantityScore'],
                 'rating_timeliness' => $fields['timelinessScore'],
-                // 'rating_average' => $fields[''],
+                'rating_average' => $fields['rating_average'],
                 'remarks' => $fields['remarks'],
             ]);
-
         }
         return $result;
     }
