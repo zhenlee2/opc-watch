@@ -439,32 +439,32 @@
 <script>
     // get_activity(1);
 
-    $('#category-id').change(function() {
-        let cat_id = $(this).val();
-        console.log(cat_id);
-        get_activity(cat_id);
-    });
+    // $('#category-id').change(function() {
+    //     let cat_id = $(this).val();
+    //     console.log(cat_id);
+    //     get_activity(cat_id);
+    // });
 
-    $('#indicator-id').change(function() {
-        let indi_id = $(this).val();
-        console.log(indi_id);
-        get_indicator(indi_id);
-    });
+    // $('#indicator-id').change(function() {
+    //     let indi_id = $(this).val();
+    //     console.log(indi_id);
+    //     get_indicator(indi_id);
+    // });
 
-    function get_activity(cat_id) {
-        let act_opt_id = $('#activity-id optgroup');
-        $.get( BASE_URL + "ajax/get_activity/" + cat_id, function(res) {
-            act_opt_id.empty();
-            res.forEach(e => {
-                act_opt_id.append('<option value="'+e.id+'">'+e.name+'</option>');
-            });
-        });
-    }
+    // function get_activity(cat_id) {
+    //     let act_opt_id = $('#activity-id optgroup');
+    //     $.get( BASE_URL + "ajax/get_activity/" + cat_id, function(res) {
+    //         act_opt_id.empty();
+    //         res.forEach(e => {
+    //             act_opt_id.append('<option value="'+e.id+'">'+e.name+'</option>');
+    //         });
+    //     });
+    // }
 </script>
 <script>
 
     function get_indicator() {
-        console.log("Hello");
+        // console.log("Hello");
         var row = $(event.target).closest('tr');
 
         var category = row.find('[data-category]').data('category');
@@ -479,7 +479,7 @@
         var alloted = row.find('[data-alloted]').data('alloted');
         var center = row.find('[data-center]').data('center');
         
-        console.log("category");
+        // console.log("category");
         // console.log(category, id, name, sub, sort, target, quantity, quality, timeliness, alloted, center);
 
         $('#category-name').val(category);
@@ -591,11 +591,11 @@
     }
 
     // Attach the click event to the delete button
-    $(document).ready(function () {
-        $("#deleteButton").click(function () {
-            delete_opc();
-        });
-    });
+    // $(document).ready(function () {
+    //     $("#deleteButton").click(function () {
+    //         delete_opc();
+    //     });
+    // });
 
 
     $(document).ready(function () {
@@ -651,9 +651,9 @@
         var totalCoreBudget = calculateBudgetAllocation('core2');
         var totalSupportBudget = calculateBudgetAllocation('support2');
 
-        console.log(totalStrategicBudget ,"hello");
-        console.log(totalCoreBudget ,"hello");
-        console.log(totalSupportBudget ,"hello");
+        // console.log(totalStrategicBudget ,"hello");
+        // console.log(totalCoreBudget ,"hello");
+        // console.log(totalSupportBudget ,"hello");
 
         var totalBudget = totalStrategicBudget + totalCoreBudget + totalSupportBudget;
 
@@ -665,7 +665,7 @@
 
       $('#alloted_weight_value').text(formattedTotaltotalBudget);
 
-      console.log(totalBudget);
+    //   console.log(totalBudget);
         // Update the total weight in the HTML
         // $('#total_weight_value').text(totalStrategicBudget + totalCoreBudge + totalSupportBudget);
     });

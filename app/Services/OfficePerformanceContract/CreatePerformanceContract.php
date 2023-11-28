@@ -46,25 +46,27 @@ class CreatePerformanceContract
 
         // !$pctrack ?? $flag = false;
 
-        for ($i=0; $i < count($data); $i++) { 
-    
-            $currentMonth = date('m');
+        // $currentMonth = date('m');
 
-            if ($currentMonth >= 1 && $currentMonth <= 6) {
-                $pc = PerformanceContract::create([
-                    'user_id' => auth()->user()->id,
-                    'year' => now()->year,
-                    'semester' => '1',
-                    'activity_id' => $data[$i]['activity_id'],
-                ]);
-            } elseif ($currentMonth >= 7 && $currentMonth <= 12) {
-                $pc = PerformanceContract::create([
-                    'user_id' => auth()->user()->id,
-                    'year' => now()->year,
-                    'semester' => '2',
-                    'activity_id' => $data[$i]['activity_id'],
-                ]);
-            }
+        // if ($currentMonth >= 1 && $currentMonth <= 6) {
+        //     $pc = PerformanceContract::create([
+        //         'user_id' => auth()->user()->id,
+        //         'year' => now()->year,
+        //         'semester' => '1',
+        //         'activity_id' => $data[$i]['activity_id'],
+        //     ]);
+        // } elseif ($currentMonth >= 7 && $currentMonth <= 12) {
+            
+        // }
+
+        for ($i=0; $i < count($data); $i++) { 
+            
+            $pc = PerformanceContract::create([
+                'user_id' => auth()->user()->id,
+                'year' => $data[$i]['year'],
+                'semester' => $data[$i]['semester'],
+                'activity_id' => $data[$i]['activity_id'],
+            ]);
     
             !$pc ?? $flag = false;
     

@@ -170,7 +170,7 @@
                                                                         <div class="m-1" ><strong id="activity-name" name="activity-name">{{$d->accom_indicator_desc}}</strong></div>
                                                                         <div class="m-1" ><strong>Ql:</strong> <span id="actual-Quality" name="actual-Quality">{{$d->accom_quantity}}</span></div>
                                                                         <div class="m-1" ><strong>Qn:</strong> <span id="actual-Quantity" name="actual-Quantity">{{$d->accom_quality}}</span></div>
-                                                                        <div class="m-1" ><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}<</span></div>
+                                                                        <div class="m-1" ><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}</span></div>
                                                                     </div>
                                                                 </div>
                                                             </td>

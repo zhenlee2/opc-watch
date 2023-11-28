@@ -267,6 +267,44 @@
                 </div>
                     <form action="" id="frm" name="frm" method="POST">
                         <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="mb-2">
+                                        <div class="col-form-label">Year</div>
+                                        <select id="year-id" class="form-control">
+                                            <optgroup label="Year">
+                                                @php
+                                                    $currentYear = date('Y');
+                                                    $startYear = $currentYear - 5; // Adjust the number of years as needed
+                                                    $endYear = $currentYear + 1; // Add 1 to include the next year
+                                                @endphp
+                                                @for ($year = $currentYear + 1; $year <= $endYear; $year++)
+                                                    <option value="{{$year}}">{{$year}}</option>
+                                                @endfor
+                                                @for ($year = $currentYear; $year >= $startYear; $year--)
+                                                    <option value="{{$year}}">{{$year}}</option>
+                                                @endfor
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-2">
+                                        <div class="col-form-label">Semester</div>
+                                        <select id="semester-id" class="form-control">
+                                            <optgroup label="Semester">
+                                                @php
+                                                    $semesters = ['First Semester', 'Second Semester'];
+                                                    $semesterValues = ['1', '2']; // Corresponding numbers
+                                                @endphp
+                                                @for ($i = 0; $i < count($semesters); $i++)
+                                                    <option value="{{$semesterValues[$i]}}">{{$semesters[$i]}}</option>
+                                                @endfor
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mb-2">
                                 <div class="col-form-label">Select KRA Category</div>
                                 <select id="category-id" class="form-control" >
@@ -395,13 +433,13 @@
 
     $('#category-id').change(function() {
         let cat_id = $(this).val();
-        console.log(cat_id);
+        // console.log(cat_id);
         get_activity(cat_id);
     });
 
     $('#indicator-id').change(function() {
         let indi_id = $(this).val();
-        console.log(indi_id);
+        // console.log(indi_id);
         get_indicator(indi_id);
     });
 
@@ -552,6 +590,8 @@
             })
         } else {
             let data = {
+                'year': $('#year-id').val(),
+                'semester': $('#semester-id').val(),
                 'category_id': $('#category-id').val(),
                 'activity_id': $('#activity-id').val(),
                 'category_name': $('#category-id option:selected').attr('data-name'),
@@ -575,8 +615,7 @@
 
             generatePCElement();
             $('#createPCModal').modal('toggle');
-           
-            
+            // console.log(data_arr);
         }
     });
 
