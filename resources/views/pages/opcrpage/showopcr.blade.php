@@ -53,61 +53,31 @@
                                                         <a href="{{route('office')}}" class="btn btn-primary btn-sm update-contact btn-sm" data-bs-original-title="Cancel" type="button"><span class="icon-arrow-left"></span></a>
                                                         <button href="#" onclick="history(0)" class="btn btn-primary btn-sm" data-bs-original-title="History" data-bs-dismiss="modal" type="button"><span class="fa fa-history"></span></button>
                                                         <button href="{{route('print', ['year' => $year, 'semester' => $semester])}}" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></button>
-                                                        <!-- <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Update" type="button"><span class="icon-save-alt"></span></button> -->
-                                                        <!-- <button class="btn btn-danger btn-sm deleteOfficepc pull-right" data-bs-original-title="Delete this OPC" type="button"><span class="icon-trash"></span></button> -->
-                                                        <!-- <div>
-                                                            <table class="table table-bordered table-xs"> 
-                                                                <tr>
-                                                                    <th class="col-sm-1 col-form-label p-1">Created by :</th>
-                                                                    <th class="col-sm-2 col-form-label p-1">CAroline</th>
-                                                                    
-                                                                    <th class="col-sm-1 col-form-label p-1">ID No.:</th>
-                                                                    <th class="col-sm-2 col-form-label p-1"></th>
-                                                                    
-                                                                    <th class="col-sm-1 col-form-label p-1">Date Created:</th>
-                                                                    <th class="col-sm-2 col-form-label p-1"></th>
-                                                                    
-                                                                <tr>
-                                                                <tr>
-                                                                    <th class="col-sm-1 col-form-label p-1">Division :</th>
-                                                                    <th class="col-sm-2 col-form-label p-1"></th>
-                                                                    
-                                                                    <th class="col-sm-1 col-form-label p-1">Section:</th>
-                                                                    <th class="col-sm-2 col-form-label p-1"></th>
-                                                                    
-                                                                    <th class="col-sm-1 col-form-label p-1">Semester:</th>
-                                                                    <th class="col-sm-2 col-form-label p-1"></th>
-                                                                <tr>                  
-                                                            </table>
-                                                        </div> -->
+                                                     
                                                             <table class="table table-bordered table-xs">                
                                                                 <thead>
                                                                 <tr align="center">
                                                                     <th colspan="2">KEY RESULTS AREA</th>
-                                                                    <th colspan="1" class="bs-0"></th>
+                                                                    <!-- <th colspan="1" class="bs-0"></th> -->
+                                                                    <th scope="col" rowspan="2"class="col-form-label p-0">Code</th> 
                                                                     
                                                                     <th rowspan="2" class="col-sm-5 p-0">PERFORMANCE INDICATOR </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
-                                                                    <th rowspan="2" class="col-sm-5 p-0">ACTUAL PERFORMANCE </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
+                                                                    <th rowspan="2" class="col-sm-4 p-0">ACTUAL PERFORMANCE </br>(<i class="icofont icofont-ui-cart"></i> Quantity, <i class="icofont icofont-speech-comments"></i> Quality, <i class="icofont icofont-ui-calendar"></i> Timeliness)</th>
                                                                     <th colspan="4">RATING</th>
-                                                                    <th rowspan="2" class="col-sm-2 ">REMARKS</th> 
+                                                                    <th rowspan="4" class="col-sm-2 ">REMARKS</th> 
                                                                     
                                                                     <!-- <th rowspan="2" scope="col" class="col-sm-1 col-form-label"><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button></th> -->
                                                                     
                                                                 </tr>
                                                                 <tr align="center" > 
-                                                                    <th scope="col" class="col-form-label col-2 "><i class="icofont icofont-trophy"></i> Objectives, Program, Project, Activity</th>
+                                                                    <th scope="col" class="col-form-label col-2 "><i class="icofont icofont-trophy" colspan="2"></i> Objectives, Program, Project, Activity</th>
                                                                     <th scope="col" class="p-0"><i class="icofont icofont-chart-pie"></i> Weight Allocation</th> 
-                                                                    <th scope="col" class="p-0">Code</th>
+                                                                    
                                                                     <th scope="col" class="col-form-label p-0">Quantity</br>Score</th> 
                                                                     <th scope="col" class="col-form-label p-0">Quality</br>Score</th> 
                                                                     <th scope="col" class="col-form-label p-0">Timeliness</br>Score</th> 
                                                                     <th scope="col" class="col-form-label p-0">Weighted</br>Average</th> 
 
-                                                                    <!-- <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Quantity</br>Score</th>
-                                                                    <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Quality</br>Score</th>
-                                                                    <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Timeliness</br>Score</th>
-                                                                    <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Average</br>Score</th>
-                                                                    <th rowspan="2" scope="col" class="col-sm-1 col-form-label">Weighted</br>Average</th>                     -->
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -154,8 +124,8 @@
                                                             <!-- <div class="col-1 text-center p-0 m-1">{{ $d->sort }}</div> -->
                                                                     <div class="col-11">
                                                                     <div class="m-1" data-target="{{$d->target_indicator_desc}}"><strong>{{ $d->target_indicator_desc}}</strong></div>
-                                                                    <div class="m-1" data-quantity="{{$d->quantity}}"><strong>Ql:</strong> {{ $d->quantity }}</div>
-                                                                    <div class="m-1" data-quality="{{$d->quality}}"><strong>Qn:</strong> {{ $d->quality }}</div>
+                                                                    <div class="m-1" data-quantity="{{$d->quantity}}"><strong>Qn:</strong> {{ $d->quantity }}</div>
+                                                                    <div class="m-1" data-quality="{{$d->quality}}"><strong>Ql:</strong> {{ $d->quality }}</div>
                                                                     <div class="m-1" data-timeliness="{{$d->timeliness}}"><strong>T:</strong> {{ $d->timeliness }}</div>
                                                                         
                                                                     </div>
@@ -164,23 +134,24 @@
                                                             <!-- Target PERFORMANCE -->
                                                            
                                                             <td class="p-0">
-                                                                <div class="row">
-                                                                <!-- <div class="col-1 text-center p-0 m-1"></div> -->
-                                                                    <div class="col-11">
-                                                                        <div class="m-1" ><strong id="activity-name" name="activity-name">{{$d->accom_indicator_desc}}</strong></div>
-                                                                        <div class="m-1" ><strong>Ql:</strong> <span id="actual-Quality" name="actual-Quality">{{$d->accom_quantity}}</span></div>
-                                                                        <div class="m-1" ><strong>Qn:</strong> <span id="actual-Quantity" name="actual-Quantity">{{$d->accom_quality}}</span></div>
-                                                                        <div class="m-1" ><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}</span></div>
+                                                                    <div class="row">
+                                                                    <!-- <div class="col-1 text-center p-0 m-1"></div> -->
+                                                                        <div class="col-11">
+                                                                            <div class="m-1" data-accomplish = "{{$d->accom_indicator_desc}}"><strong  id="activity-name" name="activity-name">{{$d->accom_indicator_desc}}</strong></div>
+                                                                            <div class="m-1" data-quanaccom = "{{$d->accom_quantity}}"><strong>Ql:</strong> <span id="actual-Quantity" name="actualf-Quantity">{{$d->accom_quantity}}</span></div>
+                                                                            <div class="m-1" data-qualaccom = "{{$d->accom_quality}}"><strong>Qn:</strong> <span id="actual-Quality" name="actual-Quality">{{$d->accom_quality}}</span></div>
+                                                                            <div class="m-1" data-timeaccom = "{{$d->accom_timeliness}}"><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}</span></div>
+                                                                            
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                                <td class="c" id="quality-Score" name="quality-Score" style="text-align: center;">{{$d->rating_quantity}}</td>
-                                                                <td id="quantity-Score" name="quantity-Score" style="text-align: center;">{{$d->rating_quality}}</td>
-                                                                <td id="timeliness-Score" name="timeliness-Score" style="text-align: center;">{{$d->rating_timeliness}}</td>
-                                                                <td  id="rating_average" name="rating_average" style="text-align: center;">{{$d->rating_average}}</td>
+                                                                </td>
+                                                                <td data-ratingquan = "{{$d->rating_quantity}}" id="quantity-Score" name="quantity-Score" style="text-align: center;">{{$d->rating_quantity}}</td>
+                                                                <td data-ratingqual = "{{$d->rating_quality}}" id="quality-Score" name="quality-Score" style="text-align: center;">{{$d->rating_quality}}</td>
+                                                                <td data-ratingtime = "{{$d->rating_timeliness}}" id="timeliness-Score" name="timeliness-Score" style="text-align: center;">{{$d->rating_timeliness}}</td>
+                                                                <td data-ratingave = "{{$d->rating_average}}" id="rating_average" name="rating_average" style="text-align: center;">{{$d->rating_average}}</td>
                                                                 <td class="p-0" >
-                                                                    <div class="m-1" ><strong></strong> <span id="remarks-val" name="remarks-val">{{$d->remarks}}</span></div>
-                                                            </td>
+                                                                <div class="m-1" data-remarks = "{{$d->remarks}}"><strong></strong> <span id="remarks-val" name="remarks-val">{{$d->remarks}}</span></div>
+                                                                </td>
                                                         </tr>
                                                        
                                                     @endif
@@ -238,26 +209,24 @@
                                                             </td>
                                                             <!-- Target PERFORMANCE -->
                                                             
-                                                                <td class="p-0">
+                                                            <td class="p-0">
                                                                     <div class="row">
                                                                     <!-- <div class="col-1 text-center p-0 m-1"></div> -->
                                                                         <div class="col-11">
-                                                                            <div class="m-1" ><strong id="activity-name" name="activity-name">{{$d->accom_indicator_desc}}</strong></div>
-                                                                            <div class="m-1" ><strong>Ql:</strong> <span id="actual-Quality" name="actualf-Quality">{{$d->accom_quantity}}</span></div>
-                                                                            <div class="m-1" ><strong>Qn:</strong> <span id="actual-Quantity" name="actual-Quantity">{{$d->accom_quality}}</span></div>
-                                                                            <div class="m-1" ><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}</span></div>
+                                                                            <div class="m-1" data-accomplish = "{{$d->accom_indicator_desc}}"><strong  id="activity-name" name="activity-name">{{$d->accom_indicator_desc}}</strong></div>
+                                                                            <div class="m-1" data-quanaccom = "{{$d->accom_quantity}}"><strong>Ql:</strong> <span id="actual-Quantity" name="actualf-Quantity">{{$d->accom_quantity}}</span></div>
+                                                                            <div class="m-1" data-qualaccom = "{{$d->accom_quality}}"><strong>Qn:</strong> <span id="actual-Quality" name="actual-Quality">{{$d->accom_quality}}</span></div>
+                                                                            <div class="m-1" data-timeaccom = "{{$d->accom_timeliness}}"><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}</span></div>
                                                                             
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td class="c" id="quality-Score" name="quality-Score" style="text-align: center;">{{$d->rating_quantity}}</td>
-                                                                <td id="quantity-Score" name="quantity-Score" style="text-align: center;">{{$d->rating_quality}}</td>
-                                                                <td id="timeliness-Score" name="timeliness-Score" style="text-align: center;">{{$d->rating_timeliness}}</td>
-                                                                <td  id="rating_average" name="rating_average" style="text-align: center;">{{$d->rating_average}}</td>
+                                                                <td data-ratingquan = "{{$d->rating_quantity}}" id="quantity-Score" name="quantity-Score" style="text-align: center;">{{$d->rating_quantity}}</td>
+                                                                <td data-ratingqual = "{{$d->rating_quality}}" id="quality-Score" name="quality-Score" style="text-align: center;">{{$d->rating_quality}}</td>
+                                                                <td data-ratingtime = "{{$d->rating_timeliness}}" id="timeliness-Score" name="timeliness-Score" style="text-align: center;">{{$d->rating_timeliness}}</td>
+                                                                <td data-ratingave = "{{$d->rating_average}}" id="rating_average" name="rating_average" style="text-align: center;">{{$d->rating_average}}</td>
                                                                 <td class="p-0" >
-                                                                    <div class="m-1" ><strong></strong> <span id="remarks-val" name="remarks-val">{{$d->remarks}}</span></div>
-
-                                                                    </div>
+                                                                <div class="m-1" data-remarks = "{{$d->remarks}}"><strong></strong> <span id="remarks-val" name="remarks-val">{{$d->remarks}}</span></div>
                                                                 </td>
                                                         </tr>
                                                     @endif
@@ -313,24 +282,24 @@
                                                                 </div>
                                                             </td>
                                                             <!-- Target PERFORMANCE -->
-                                                            <td class="p-0">
+                                                                <td class="p-0">
                                                                     <div class="row">
                                                                     <!-- <div class="col-1 text-center p-0 m-1"></div> -->
                                                                         <div class="col-11">
-                                                                            <div class="m-1" ><strong id="activity-name" name="activity-name">{{$d->accom_indicator_desc}}</strong></div>
-                                                                            <div class="m-1" ><strong>Ql:</strong> <span id="actual-Quality" name="actualf-Quality">{{$d->accom_quantity}}</span></div>
-                                                                            <div class="m-1" ><strong>Qn:</strong> <span id="actual-Quantity" name="actual-Quantity">{{$d->accom_quality}}</span></div>
-                                                                            <div class="m-1" ><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}</span></div>
+                                                                            <div class="m-1" data-accomplish = "{{$d->accom_indicator_desc}}"><strong  id="activity-name" name="activity-name">{{$d->accom_indicator_desc}}</strong></div>
+                                                                            <div class="m-1" data-quanaccom = "{{$d->accom_quantity}}"><strong>Ql:</strong> <span id="actual-Quantity" name="actualf-Quantity">{{$d->accom_quantity}}</span></div>
+                                                                            <div class="m-1" data-qualaccom = "{{$d->accom_quality}}"><strong>Qn:</strong> <span id="actual-Quality" name="actual-Quality">{{$d->accom_quality}}</span></div>
+                                                                            <div class="m-1" data-timeaccom = "{{$d->accom_timeliness}}"><strong>T:</strong> <span id="actual-Timeliness" name="actual-Timeliness">{{$d->accom_timeliness}}</span></div>
                                                                             
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td class="c" id="quality-Score" name="quality-Score" style="text-align: center;">{{$d->rating_quantity}}</td>
-                                                                <td id="quantity-Score" name="quantity-Score" style="text-align: center;">{{$d->rating_quality}}</td>
-                                                                <td id="timeliness-Score" name="timeliness-Score" style="text-align: center;">{{$d->rating_timeliness}}</td>
-                                                                <td  id="rating_average" name="rating_average" style="text-align: center;">{{$d->rating_average}}</td>
+                                                                <td data-ratingquan = "{{$d->rating_quantity}}" id="quantity-Score" name="quantity-Score" style="text-align: center;">{{$d->rating_quantity}}</td>
+                                                                <td data-ratingqual = "{{$d->rating_quality}}" id="quality-Score" name="quality-Score" style="text-align: center;">{{$d->rating_quality}}</td>
+                                                                <td data-ratingtime = "{{$d->rating_timeliness}}" id="timeliness-Score" name="timeliness-Score" style="text-align: center;">{{$d->rating_timeliness}}</td>
+                                                                <td data-ratingave = "{{$d->rating_average}}" id="rating_average" name="rating_average" style="text-align: center;">{{$d->rating_average}}</td>
                                                                 <td class="p-0" >
-                                                                <div class="m-1" ><strong></strong> <span id="remarks-val" name="remarks-val">{{$d->remarks}}</span></div>
+                                                                <div class="m-1" data-remarks = "{{$d->remarks}}"><strong></strong> <span id="remarks-val" name="remarks-val">{{$d->remarks}}</span></div>
                                                                 </td>
                                                         </tr>
                                                     @endif
@@ -342,7 +311,8 @@
                                                     <tr id="total_weight">
                                                         <!-- <td colspan=""></td> -->
                                                         <td name="total_weight" class="text-center p-1">Total Weight:</td>
-                                                        <td colspan="1"></td>
+                                                        <td colspan="1" name="total_weight_value" id="total_weight_value" class="text-center p-0"></td>
+                                                        <!-- <td colspan="1"></td> -->
                                                         <td colspan="7"></td>
                                                     </tr>
                                                 </tbody>
@@ -481,13 +451,13 @@
                                         <div class="col-sm-4">
                                             <div class="mb-2">
                                             <label>Quantity Score</label>
-                                                <input class="form-control" name="quantityScore" id="quantityScore" type="number" min="1" max="5" step="any">
+                                                <input class="form-control" name="quantityscore" id="quantityScore" type="number" min="1" max="5" step="any">
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="mb-2">
                                             <label>Quality Score</label>
-                                                <input class="form-control" name="qualityScore" id="qualityScore" type="number" min="1" max="5" step="any">
+                                                <input class="form-control" name="qualityscore" id="qualityScore" type="number" min="1" max="5" step="any">
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -496,7 +466,6 @@
                                                 <input class="form-control" name="timelinessScore" id="timelinessScore" type="number" min="1" max="5" step="any">
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="row">
                                     <div class="col">
@@ -593,21 +562,42 @@
 <script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script> -->
 
 <script>
-
-   
+ 
     function editRating(){
-        console.log("Hello");
+             
+        // console.log("Hello");
         var row = $(event.target).closest('tr');
 
-        var category = row.find('[data-category]').data('category');
-        var id = row.find('[data-id]').data('id');
+        var id = row.find('[data-id]').data('id'); // Id of indicator
 
-        // console.log(id);
+        var targetIndicator = row.find('[data-accomplish]').data('accomplish');
+        var quanaccom = row.find('[data-quanaccom]').data('quanaccom');
+        var qualaccom = row.find('[data-qualaccom]').data('qualaccom');
+        var timeaccom = row.find('[data-timeaccom]').data('timeaccom');
+        var ratingquan = row.find('[data-ratingquan]').data('ratingquan');
+        var ratingqual = row.find('[data-ratingqual]').data('ratingqual');
+        var ratingtime = row.find('[data-ratingtime]').data('ratingtime');
+        var ratingave = row.find('[data-ratingave]').data('ratingave');
+        var remarks = row.find('[data-remarks]').data('remarks');
+    
+
+        $('#targetIndicator').val(targetIndicator);
+        $('#quantity').val(quanaccom);
+        $('#quality').val(qualaccom);
+        $('#timeliness').val(timeaccom);
+        // var qualityScoreData = $("#quality-Score").data("ratingquan");
+        // console.log(ratingquan);
+        $('#quantityScore').val(ratingquan);
+        $('#qualityScore').val(ratingqual);
+        $('#timelinessScore').val(ratingtime);
+        // $('#qualityScore').val(ratingave);
+        $('#remarks').val(remarks);
 
         $("#editRating").click(function(event) {
         event.preventDefault();
-        // console.log("Hello");
 
+       
+    //   console.log("Hello");
         // Retrieve data from form fields
         var targetIndicator = $('#targetIndicator').val();
         var quantity = $('#quantity').val();
@@ -617,38 +607,25 @@
         var qualityScore = parseInt($('#qualityScore').val()) || 0; // Note: change the ID to match your actual ID
         var timelinessScore = parseInt($('#timelinessScore').val()) || 0; // Note: change the ID to match your actual ID
         var remarks = $('#remarks').val();
-        // console.log(remarks);
-        // if(category == "CORE FUNCTIONS"){
-        //     if(id)
-                // $('#activity-name').text(targetIndicator);
-                // $('#actual-Quantity').text(quantity);
-                // $('#actual-Quality').text(quality);
-                // $('#actual-Timeliness').text(timeliness);
-                // $('#quality-Score').text(qualityScore);
-                // $('#quantity-Score').text(quantityScore);
-                // $('#timeliness-Score').text(timelinessScore);
-                // $('#remarks-val').text(remarks);
-        // }
-
-       
-
         var ratingaverage = (quantityScore+qualityScore+timelinessScore)/3;
 
-
+        if (quantityScore  < 0 || quantityScore  > 5 || qualityScore  < 0 || qualityScore  > 5 || timelinessScore  < 0 || timelinessScore  > 5) {
+        alert('Please enter a value according to rating guide. Thank you!');
+        return;
+      }else{
+      console.log("Hello");
         var dataToSend = {
             pcindicator_id : id,
             targetIndicator : targetIndicator,
             quantity: quantity,
             quality: quality,
             timeliness: timeliness,
-            qualityScore: quantityScore,
-            quantityScore: qualityScore,
+            qualityScore: qualityScore,
+            quantityScore: quantityScore,
             timelinessScore: timelinessScore,
             rating_average: ratingaverage,
             remarks: remarks
         }
-
-        // console.log(dataToSend);
 
         // Check if dataToSend is not empty before sending the request
         if (Object.keys(dataToSend).length > 0) {
@@ -692,45 +669,39 @@
         } else {
             console.log('Data to send is empty');
         }
+        }
     });
         
-
-        // // Now you can use the retrieved data as needed
-        // console.log('Actual Performance:', targetIndicator);
-        // console.log('Actual Quantity:', quantity);
-        // console.log('Actual Quality:', quality);
-        // console.log('Actual Timeliness:', timeliness);
-        // console.log('Quantity Score:', quantityScore);
-        // console.log('Quality Score:', qualityScore);
-        // console.log('Timeliness Score:', timelinessScore);
-        // console.log('Remarks:', remarks);
-
-        // $('#activity-name').text(targetIndicator);
-        // $('#actual-Quantity').text(quantity);
-        // $('#actual-Quality').text(quality);
-        // $('#actual-Timeliness').text(timeliness);
-        // $('#quality-Score').text(qualityScore);
-        // $('#quantity-Score').text(quantityScore);
-        // $('#timeliness-Score').text(timelinessScore);
-        // $('#remarks-val').text(remarks);
-
-
-        // $('#editModal').modal('toggle');
-        // // You can perform further actions or send the data to the server using AJAX
-    
     }
-    // var row = $(event.target).closest('tr');
-    // Assuming you want to retrieve data when the form is submitted
-//     $('#editform').submit(function(event){
-//         // Prevent the default form submission
-//         event.preventDefault();
+  
+$(document).ready(function () {
+        // Function to calculate total weight for a specific category
+        function calculateTotalWeight(categoryId) {
+            var totalWeight = 0;
 
-        
+            $('#' + categoryId + ' .sub-weight').each(function () {
+                var subWeight = parseFloat($(this).data('sub'));
+
+                if (!isNaN(subWeight)) {
+                    totalWeight += subWeight;
+                }
+            });
+
+            return totalWeight;
+        }
+
+        // Calculate and update total weights
+        var totalStrategicWeight = calculateTotalWeight('strategic2');
+        var totalCoreWeight = calculateTotalWeight('core2');
+        var totalSupportWeight = calculateTotalWeight('support2');
+
+       
+        $('#total_weight_value').text(totalStrategicWeight + totalCoreWeight + totalSupportWeight);
+    });
+
+
 
     
-// });
-
-
   
     // $("#frm").submit(function(event){
     //     event.preventDefault();
