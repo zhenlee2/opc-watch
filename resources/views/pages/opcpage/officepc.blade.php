@@ -17,7 +17,7 @@
 @endsection
 
 @section('breadcrumb-title')
-<h5>OFFICE PERFORMANCE CONTRACT</h5>
+<h3>OFFICE PERFORMANCE CONTRACT</h3>
 @endsection
 
 @section('breadcrumb-items')
@@ -51,41 +51,27 @@
                                                                     <th>Semester</th>
                                                                     <!-- <th>Final Rating</th> -->
                                                                     <th>Total Indicator</th>
-                                                                    <th>Ratification</th>
+                                                                    <!-- <th>Ratification</th> -->
                                                                     <th>Creator</th>
                                                                     <th>Date Created</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <!-- <tr>
-                                                                    <td>
-                                                                    <a href="{{route('showpc', ['year' => '2023', 'semester' => '1'])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
-                                                                    </td>
-                                                                    <td>2022</td>
-                                                                    <td>2nd</td>
-                                                                    <td>30</td>
-                                                                    <td>Carolin Catalan</td>
-                                                                    <td>2022/07/25</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                    <a href="{{route('showpc', ['year' => '2023', 'semester' => '2'])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
-                                                                    </td>
-                                                                    <td>2023</td>
-                                                                    <td>1st</td>
-                                                                    <td>40</td>
-                                                                    <td>Carolin Catalan</td>
-                                                                    <td>2023/01/25</td>
-                                                                </tr> -->
+
                                                                 @foreach ($list as $l)
                                                                     <tr>
                                                                         <td>
                                                                         <a href="{{route('showpc', ['year' => $l->year, 'semester' => $l->semester])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
                                                                         </td>
                                                                         <td>{{ $l->year }}</td>
-                                                                        <td>{{ $l->semester }}</td>
+                                                                        
+                                                                        <td>@if($l->semester == 1 )
+                                                                            First Semester
+                                                                            @else
+                                                                            Second Semester
+                                                                        @endif</td>
                                                                         <td>{{ $l->total_indicator }}</td>
-                                                                        <td></td>
+                                                                        <!-- <td></td> -->
                                                                         <td>{{ $l->fullname }}</td>
                                                                         <td>{{ $l->created_at }}</td>
                                                                     </tr>

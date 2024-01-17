@@ -11,9 +11,9 @@ class PerformanceContract extends Model
 {
     protected $table = 'pc';
 
-    use SoftDeletes;
 
     protected $fillable = [
+        'id',
         'user_id',
         'activity_id',
         'indicator_track_id',

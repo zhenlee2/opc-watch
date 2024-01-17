@@ -12,8 +12,6 @@ class PerformanceContractReview extends Model
 
     protected $table = 'pcr';
 
-    use SoftDeletes;
-
     protected $fillable = [
         'indicator_id',
         'pcindicator_id',

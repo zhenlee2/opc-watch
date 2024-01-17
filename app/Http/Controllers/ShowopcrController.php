@@ -20,28 +20,10 @@ class ShowopcrController extends Controller
         if(Auth::check()) {
             $user = Users::findOrFail(auth()->id());
             $indicator = Indicator::select('sort')->groupBy('sort')->get();
-            // $rating = $showPerformanceContractRating->execute($request->input('pcindicator_id'));
             return view('pages.opcrpage.showopcr', compact('indicator', 'user'));
         }else {
             return redirect()->route('login');
         }
     }
 
-    // public function save_rating(Request $request, PerformanceContractRating $PerformanceContractRating)
-    // {
-    //     $response = $PerformanceContractRating->execute($request);
-
-    //     if(!$response){
-    //         return response()->json([                
-    //             'status' => "error",
-    //             'description' => "Error encountered: failed to save",
-    //         ],404);
-    //     }
-        
-    //     return response()->json([                
-    //         'status' => "success",
-    //         'description' => "Successfully save indicator",
-    //         'data' => $response
-    //     ],200);
-    // }
 }

@@ -319,15 +319,15 @@
                                                 <tbody>
                                                     <tr id="total_weight">
                                                         <td colspan="4"></td>
-                                                        <td colspan="2" name="" class="text-center p-1">Final Rating:</td>
-                                                        <td colspan="3"></td>
+                                                        <td colspan="2" class="text-center p-1">Final Rating:</td>
+                                                        <td colspan="3" class="text-center" name="final_rating" id="final_rating"></td>
                                                     </tr>
                                                 </tbody>
                                                 <thead>
                                                     <tr id="total_weight">
                                                         <td colspan="4"></td>
                                                         <td colspan="2" name="" class="text-center p-1">Adjectival Rating: </td>
-                                                        <td colspan="3"></td>
+                                                        <td colspan="3" class="text-center" name="adjectival_rating" id="adjectival_rating"></td>
                                                     </tr>
                                                 </thead>
 
@@ -562,7 +562,101 @@
 <script src="{{asset('assets/js/typeahead-search/typeahead-custom.js')}}"></script> -->
 
 <script>
- 
+
+$(document).ready(function () {
+        // Get the href attribute value
+        var hrefValue = $('a.btn.btn-primary.btn-sm').attr('href');
+
+        // Extract parameters from the URL
+        var urlParams = new URLSearchParams(hrefValue);
+        var yearValue = urlParams.get('year');
+        var semesterValue = urlParams.get('semester');
+
+        // Output the values to the console (you can replace this with your desired logic)
+        console.log('Year Value:', yearValue);
+        console.log('Semester Value:', semesterValue);
+    });
+
+
+$(document).ready(function () {
+        // Initialize sum variable, adjectival rating, and total ratings count
+        var totalRatingAverage = 0;
+        var adjectivalRating = '';
+        var totalRatingsCount = 0;
+
+        // Loop through each row
+        $('tr').each(function () {
+            var $row = $(this);
+
+            // Retrieve data from the 'rating_average' attribute
+            var ratingAverage = $row.find('[data-ratingave]').data('ratingave');
+
+            // Parse the ratingAverage as a float (assuming it's a numeric value)
+            ratingAverage = parseFloat(ratingAverage);
+
+            // Check if the parsed value is a valid number
+            if (!isNaN(ratingAverage)) {
+                // Add the ratingAverage to the total sum
+                totalRatingAverage += ratingAverage;
+                // Increment the totalRatingsCount
+                totalRatingsCount++;
+            }
+        });
+
+        // Calculate the average rating
+        var averageRating = totalRatingsCount > 0 ? totalRatingAverage / totalRatingsCount : 0;
+
+        // Determine adjectival rating based on averageRating range
+        if (averageRating >= 90) {
+            adjectivalRating = 'Outstanding';
+        } else if (averageRating >= 80) {
+            adjectivalRating = 'Excellent';
+        } else if (averageRating >= 70) {
+            adjectivalRating = 'Good';
+        } else if (averageRating >= 60) {
+            adjectivalRating = 'Satisfactory';
+        } else {
+            adjectivalRating = 'Needs Improvement';
+        }
+
+        // Output the total sum, average rating, and adjectival rating to the console (you can replace this with your desired logic)
+        // console.log('Total Rating Average:', totalRatingAverage);
+        // console.log('Average Rating:', averageRating);
+        // console.log('Adjectival Rating:', adjectivalRating);
+
+        // Add the totalRatingAverage and adjectivalRating to the "Final Rating" cell
+        $('#final_rating').text(totalRatingAverage.toFixed(2) );
+        // Add the adjectivalRating to the "Adjectival Rating" cell
+        $('#adjectival_rating').text(adjectivalRating);
+    });
+
+ $(document).ready(function () {
+    
+        // Function to calculate total weight for a specific category
+        function calculateTotalWeight(categoryId) {
+            var totalWeight = 0;
+
+            $('#' + categoryId + ' .sub-weight').each(function () {
+                var subWeight = parseFloat($(this).data('sub'));
+
+                if (!isNaN(subWeight)) {
+                    totalWeight += subWeight;
+                }
+            });
+
+            return totalWeight;
+        }
+
+        // Calculate and update total weights
+        var totalStrategicWeight = calculateTotalWeight('strategic2');
+        var totalCoreWeight = calculateTotalWeight('core2');
+        var totalSupportWeight = calculateTotalWeight('support2');
+
+       
+        $('#total_weight_value').text(totalStrategicWeight + totalCoreWeight + totalSupportWeight);
+    });
+
+
     function editRating(){
              
         // console.log("Hello");
@@ -613,7 +707,6 @@
         alert('Please enter a value according to rating guide. Thank you!');
         return;
       }else{
-      console.log("Hello");
         var dataToSend = {
             pcindicator_id : id,
             targetIndicator : targetIndicator,
@@ -671,101 +764,6 @@
         }
         }
     });
-        
     }
-  
-$(document).ready(function () {
-        // Function to calculate total weight for a specific category
-        function calculateTotalWeight(categoryId) {
-            var totalWeight = 0;
-
-            $('#' + categoryId + ' .sub-weight').each(function () {
-                var subWeight = parseFloat($(this).data('sub'));
-
-                if (!isNaN(subWeight)) {
-                    totalWeight += subWeight;
-                }
-            });
-
-            return totalWeight;
-        }
-
-        // Calculate and update total weights
-        var totalStrategicWeight = calculateTotalWeight('strategic2');
-        var totalCoreWeight = calculateTotalWeight('core2');
-        var totalSupportWeight = calculateTotalWeight('support2');
-
-       
-        $('#total_weight_value').text(totalStrategicWeight + totalCoreWeight + totalSupportWeight);
-    });
-
-
-
-    
-  
-    // $("#frm").submit(function(event){
-    //     event.preventDefault();
-
-    //     if($("#indicator-id").val() == '') {
-    //         Swal.fire({
-    //             icon: 'error',
-    //             title: 'Oops...',
-    //             text: 'Please select indicator code!',
-    //         })
-    //     } else {
-    //         Swal.fire({
-    //             title: 'Are you sure?',
-    //             text: "You won't be able to revert this!",
-    //             icon: 'warning',
-    //             showCancelButton: true,
-    //             confirmButtonColor: '#3085d6',
-    //             cancelButtonColor: '#d33',
-    //             confirmButtonText: 'Yes, save it!'
-    //         }).then((result) => {
-    //             if (result.isConfirmed) {
-    //                 let data_arr = {
-    //                     'category_id': $('#category-id').val(),
-    //                     'activity_id': $('#activity-id').val(),
-    //                     'indicator_code': $('#indicator-id').val(),
-    //                     'indicator': $("input[name='indicator[]']").map(function(){return $(this).val();}).get(),
-    //                     'weight': $("input[name='weight[]']").map(function(){return $(this).val();}).get(),
-    //                     'target': $("input[name='target[]']").map(function(){return $(this).val();}).get(),
-    //                     'qual': $("input[name='qual[]']").map(function(){return $(this).val();}).get(),
-    //                     'quan': $("input[name='quan[]']").map(function(){return $(this).val();}).get(),
-    //                     'time': $("input[name='time[]']").map(function(){return $(this).val();}).get(),
-    //                     'budget_alloted': $("input[name='budget[]']").map(function(){return $(this).val();}).get(),
-    //                     'office': $("input[name='office[]']").map(function(){return $(this).val();}).get(),
-    //                 };
-    //                 $.ajax ({
-    //                     headers: {
-    //                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //                     },
-    //                     url: BASE_URL + 'performance_contract/save_indicator',
-    //                     type: 'post',
-    //                     data: data_arr,
-    //                     dataType: 'json',
-    //                     success: function(response){
-    //                         Swal.fire(
-    //                             'Confirm!',
-    //                             'Your file has been saved.',
-    //                             'success'
-    //                         )
-    //                         $('#createPCModal').modal('toggle');
-    //                         setTimeout(() => {
-    //                             location.reload();
-    //                         }, 1000);
-    //                     },
-    //                     error: function(error){
-    //                         Swal.fire(
-    //                             'Failed!',
-    //                             'Your file has not been saved.',
-    //                             'error'
-    //                         )
-    //                     }
-    //                 });
-    //             }
-    //         })
-    //     }
-    // });
 </script>
 @endsection

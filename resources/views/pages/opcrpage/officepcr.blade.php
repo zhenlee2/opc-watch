@@ -64,7 +64,11 @@
                                                                     <a href="{{route('officereview', ['year' => $l->year, 'semester' => $l->semester])}}" class="btn btn-light btn-sm example-popover form-control " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View"><span class="icofont icofont-eye-alt" ></span></a>
                                                                         </td>
                                                                         <td>{{ $l->year }}</td>
-                                                                        <td>{{ $l->semester }}</td>
+                                                                        <td>@if($l->semester == 1 )
+                                                                            First Semester
+                                                                            @else
+                                                                            Second Semester
+                                                                        @endif</td>
                                                                         <td>{{ $l->total_indicator }}</td>
                                                                         <td></td>
                                                                         <td></td>

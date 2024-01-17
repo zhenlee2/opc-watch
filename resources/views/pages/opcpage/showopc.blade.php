@@ -49,37 +49,8 @@
                                                         <a href="{{route('print', ['year' => $year, 'semester' => $semester])}}" class="btn btn-primary btn-sm" data-bs-original-title="Print" data-bs-dismiss="modal" type="button"><span class="icon-printer"></span></a>
                                                         <!-- <button class="btn btn-success btn-sm saveOfficepc pull-right" data-bs-original-title="Update" type="button"><span class="icon-save-alt"></span></button> -->
                                                         <button class="btn btn-danger btn-sm deleteOfficepc pull-right" data-bs-original-title="Delete this OPC" onclick="delete_opc()" id="delete-opc" type="button"><span class="icon-trash"></span></button>
-                                                        <div>
-                                                            <!-- <table class="table table-bordered table-sm"> 
-                                                                <tr>
-                                                              
-                                                                    <th class="col-sm-1 col-form-label p-2">Created by :</th>
-                                                                @foreach ($data as $d)
-                                                                    @if(!empty($d)==1)
-                                                                    <th class="col-sm-2 col-form-label p-2">{{$d->fname}} {{$d->lname}}</th>
-                                                                    @break
-                                                                    @endif
-                                                                @endforeach
-                                                                    <th class="col-sm-1 col-form-label p-2">ID No.:</th>
-                                                                    <th class="col-sm-2 col-form-label p-2"></th>
-                                                                    
-                                                                    <th class="col-sm-1 col-form-label p-2">Date Created:</th>
-                                                                    <th class="col-sm-2 col-form-label p-2"></th>
-                                                                    
-                                                            </tr>
-                                                                <tr>
-                                                                    <th class="col-sm-1 col-form-label p-2">Division :</th>
-                                                                    <th class="col-sm-2 col-form-label p-2"></th>
-                                                                    
-                                                                    <th class="col-sm-1 col-form-label p-2">Section:</th>
-                                                                    <th class="col-sm-2 col-form-label p-2"></th>
-                                                                    
-                                                                    <th class="col-sm-1 col-form-label p-2">Semester:</th>
-                                                                    <th class="col-sm-2 col-form-label p-2"></th>
-                                                                </tr>                  
-                                                            </table> -->
-                                                        </div>
-                                                            <table id="datatable" class="table table-bordered table-xs">                
+                                                       
+                                                        <table id="datatable" class="table table-bordered table-xs">                
                                                                 <thead>
                                                                     <tr>
                                                                         <th colspan="2" class="text-center"><strong>KEY RESULTS AREA</strong></th>
@@ -109,6 +80,8 @@
                                                             <td class="p-0" >
                                                             <div class="text-center m-1 hidden" data-category="Strategic Priorities"></div>
                                                                 <div class="text-center m-1 hidden" data-id="{{$d->id}}"></div>
+                                                                <div class="text-center m-1 hidden" data-year="{{$d->year}}"></div>
+                                                                <div class="text-center m-1 hidden" data-semester="{{$d->semester}}"></div>
                                                                 <div class="text-center m-1" data-name="{{$d->name}}">{{ $d->name }}</div>
                                                             </td>
                                                             <td class="p-0" >
@@ -157,6 +130,8 @@
                                                             <td class="p-0" >
                                                                 <div class="text-center m-1 hidden" data-category="CORE FUNCTIONS"></div>
                                                                 <div class="text-center m-1 hidden" data-id="{{$d->id}}"></div>
+                                                                <div class="text-center m-1 hidden" data-year="{{$d->year}}"></div>
+                                                                <div class="text-center m-1 hidden" data-semester="{{$d->semester}}"></div>
                                                                 <div class="text-center m-1" data-name="{{$d->name}}">{{ $d->name }}</div>
                                                             </td>
                                                             <td class="p-0" >
@@ -204,6 +179,8 @@
                                                             <td class="p-0" >
                                                             <div class="text-center m-1 hidden" data-category="SUPPORT FUNCTION"></div>
                                                                 <div class="text-center m-1 hidden" data-id="{{$d->id}}"></div>
+                                                                <div class="text-center m-1 hidden" data-year="{{$d->year}}"></div>
+                                                                <div class="text-center m-1 hidden" data-semester="{{$d->semester}}"></div>
                                                                 <div class="text-center m-1" data-name="{{$d->name}}">{{ $d->name }}</div>
                                                             </td>
                                                             <td class="p-0" >
@@ -437,38 +414,13 @@
 <script src="{{asset('assets/js/bookmark/jquery.validate.min.js')}}"></script> -->
 <script src="{{asset('assets/js/contacts/custom.js')}}"></script>
 <script>
-    // get_activity(1);
-
-    // $('#category-id').change(function() {
-    //     let cat_id = $(this).val();
-    //     console.log(cat_id);
-    //     get_activity(cat_id);
-    // });
-
-    // $('#indicator-id').change(function() {
-    //     let indi_id = $(this).val();
-    //     console.log(indi_id);
-    //     get_indicator(indi_id);
-    // });
-
-    // function get_activity(cat_id) {
-    //     let act_opt_id = $('#activity-id optgroup');
-    //     $.get( BASE_URL + "ajax/get_activity/" + cat_id, function(res) {
-    //         act_opt_id.empty();
-    //         res.forEach(e => {
-    //             act_opt_id.append('<option value="'+e.id+'">'+e.name+'</option>');
-    //         });
-    //     });
-    // }
-</script>
-<script>
 
     function get_indicator() {
-        // console.log("Hello");
         var row = $(event.target).closest('tr');
 
         var category = row.find('[data-category]').data('category');
         var id = row.find('[data-id]').data('id');
+        var year = row.find('[data-year]').data('year');
         var name = row.find('[data-name]').data('name');
         var sub = row.find('[data-sub]').data('sub');
         var sort = row.find('[data-sort]').data('sort');
@@ -478,9 +430,6 @@
         var timeliness = row.find('[data-timeliness]').data('timeliness');
         var alloted = row.find('[data-alloted]').data('alloted');
         var center = row.find('[data-center]').data('center');
-        
-        // console.log("category");
-        // console.log(category, id, name, sub, sort, target, quantity, quality, timeliness, alloted, center);
 
         $('#category-name').val(category);
         $('#activity-name').val(name);
@@ -508,7 +457,7 @@
             alloted: $('#alloted').val(),
             center: $('#center').val()
         };
-        console.log(dataToSend);
+        console.log(dataToSend );
         // Check if dataToSend is not empty before sending the request
         if (Object.keys(dataToSend).length > 0) {
             Swal.fire({
@@ -520,7 +469,7 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, Update it!'
             }).then((result) => {
-                console.log(dataToSend);
+                // console.log(dataToSend);
                 if (result.isConfirmed) {
                     $.ajax({
                         headers: {
@@ -558,45 +507,85 @@
 
     // Function to delete an item
     function delete_opc() {
-        console.log("Delete");
-        data_arr=1;
-        if(Object.keys(data_arr).length > 0){
+
+            var numericIds = [];
+
+            $('table tbody tr').each(function () {
+                var rowData = {
+                    id: $(this).find('[data-id]').data('id'),
+                    // year: $(this).find('[data-year]').data('year'),
+                    // Add other data properties as needed
+                };
+
+                // Check if the 'id' attribute is present and not undefined
+                if (rowData.id !== undefined) {
+                    // Extract only the numeric part from id
+                    var numericId = rowData.id ? rowData.id.toString().replace(/\D/g, '') : null;
+
+                    // Check if numericId is not empty and is a number
+                    if (numericId !== null && !isNaN(numericId)) {
+                        numericIds.push(numericId);
+                    } else {
+                        console.log('ID does not contain a valid number:', rowData.id);
+                    }
+                } else {
+                    console.log(rowData.id);
+                }
+            });
+
+            // Convert the array of numeric IDs to JSON
+            // var jsonResult = JSON.stringify(numericIds);
+            var data = {
+            id: numericIds,
+        }
+        console.log(data);
+
+            if (Object.keys(data).length > 0) {
             Swal.fire({
-                title: 'Are you sure?',
+                title: 'Are you sure you want to Update?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Yes, Delete it!'
             }).then((result) => {
+                // console.log(dataToSend);
                 if (result.isConfirmed) {
-                    const idxObj = data_arr.findIndex(object => {
-                        return object.indicator_code == indicator_code;
-                    });
-
-                    data_arr.splice(idxObj, 1);
-                    $(`#indicator-id>optgroup>option[value=${indicator_code}]`).removeAttr('disabled');
-                    generatePCElement();
-                }
-            });
-        }else{
-            console.log('Data to send is empty');
-            Swal.fire(
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: BASE_URL + 'performance_contract/delete_indicator',
+                        type: 'POST',
+                        data: data,
+                        success: function(response) {
+                            Swal.fire(
+                                'Confirm!',
+                                'Your file has been saved.',
+                                'success'
+                            )
+                            setTimeout(() => {
+                                window.location.href = '/performance_contract/office';
+                            }, 1000);
+                        },
+                        error: function(error) {
+                            Swal.fire(
                                 'Failed!',
-                                'Your file are empty',
+                                'Your file has no changes',
                                 'error'
                             );
+                        }
+                    });
+                
+                }
+            });
+        } else {
+            console.log('Data to send is empty');
         }
+
+                
     }
-
-    // Attach the click event to the delete button
-    // $(document).ready(function () {
-    //     $("#deleteButton").click(function () {
-    //         delete_opc();
-    //     });
-    // });
-
 
     $(document).ready(function () {
         // Function to calculate total weight for a specific category
@@ -622,12 +611,9 @@
         // console.log(totalStrategicWeight ,"hello");
         // console.log(totalCoreWeight ,"hello");
         // console.log(totalSupportWeight ,"hello");
-
-        
-
         // Update the total weight in the HTML
        
-        $('#total_weight_value').text(totalStrategicWeight + totalCoreWeight + totalSupportWeight);
+        $('#total_weight_value').text(totalStrategicWeight + totalCoreWeight + totalSupportWeight + '%');
     });
 
     $(document).ready(function () {
@@ -665,9 +651,6 @@
 
       $('#alloted_weight_value').text(formattedTotaltotalBudget);
 
-    //   console.log(totalBudget);
-        // Update the total weight in the HTML
-        // $('#total_weight_value').text(totalStrategicBudget + totalCoreBudge + totalSupportBudget);
     });
 </script>
 @endsection

@@ -26,7 +26,8 @@ Route::prefix('performance_contract')->group(function () {
     Route::get('office/{year}/{semester}', 'CreateofficeController@showpc')->name('showpc');
     Route::get('individual', 'OfficeController@individual')->name('individual');
     Route::post('save_indicator', 'CreateofficeController@save_indicator');
-    Route::post('update_indicator', 'CreateofficeController@update_indicator');
+    Route::post('update_indicator', 'ShowopcController@update_indicator');
+    Route::post('delete_indicator', 'ShowopcController@delete_indicator');
 });
 //PERFORMANCE CONTRACT REVIEW
 Route::prefix('performance_contract_review')->group(function () {
